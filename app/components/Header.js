@@ -1,13 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { IconMenu, IconClose, IconGlobe, IconChevronDown, IconSun } from "./Icons";
+import { IconMenu, IconClose, IconSun } from "./Icons";
 
 export default function Header() {
     const [navScrolled, setNavScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [langOpen, setLangOpen] = useState(false);
-    const [lang, setLang] = useState("FR");
 
     useEffect(() => {
         const h = () => setNavScrolled(window.scrollY > 100);
@@ -28,7 +26,7 @@ export default function Header() {
         { href: "/#problemes", label: "Le Problème" },
         { href: "/#solution", label: "Solution" },
         { href: "/#piliers", label: "Piliers" },
-        { href: "/comment-ca-marche", label: "Comment ça marche" },
+        { href: "/docs", label: "Read Docs" },
     ];
 
     return (
@@ -40,20 +38,8 @@ export default function Header() {
                         {navItems.map((n) => (<li key={n.href}><Link href={n.href} className="nav-link">{n.label}</Link></li>))}
                     </ul>
                     <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                        <div className={`lang-switcher lang-switcher-desktop ${langOpen ? "open" : ""}`} onClick={() => setLangOpen(!langOpen)}>
-                            <IconGlobe size={14} />
-                            <span>{lang}</span>
-                            <IconChevronDown size={12} />
-                            <div className="lang-dropdown">
-                                {["FR", "AR", "ⵜⵎⵣ"].map((l) => (
-                                    <button key={l} className={`lang-option ${lang === l ? "active" : ""}`}
-                                        onClick={(e) => { e.stopPropagation(); setLang(l); setLangOpen(false); }}>
-                                        {l === "FR" ? "Français" : l === "AR" ? "العربية" : "Tamazight"}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                        <Link href="/#simuler" className="nav-cta">Simuler gratuitement</Link>
+
+                        <Link href="/simulation" className="nav-cta">Simuler gratuitement</Link>
                         <button className="nav-menu-btn" onClick={() => setMobileOpen(true)} aria-label="Menu"><IconMenu /></button>
                     </div>
                 </div>
@@ -71,7 +57,7 @@ export default function Header() {
                             <li key={n.href}><Link href={n.href} className="mobile-nav-link" onClick={closeMobile}>{n.label}</Link></li>
                         ))}
                     </ul>
-                    <Link href="/#simuler" className="mobile-drawer-cta" onClick={closeMobile}>Simuler gratuitement →</Link>
+                    <Link href="/simulation" className="mobile-drawer-cta" onClick={closeMobile}>Simuler gratuitement →</Link>
                 </div>
             </div>
         </>

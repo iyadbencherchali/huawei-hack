@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ============================================
    PULSE.DZ — Design System
    Award-worthy, editorial-luxury aesthetic
@@ -1111,7 +1115,7 @@ img {
 
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
 }
 
@@ -1124,19 +1128,12 @@ img {
   transition: all var(--duration-normal) var(--ease-out-expo);
   border: 1px solid rgba(30, 58, 95, 0.04);
   cursor: default;
+  height: 100%;
 }
 
 .pillar-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 30px 60px rgba(30, 58, 95, 0.1), 0 0 0 1px rgba(30, 58, 95, 0.08);
-}
-
-.pillar-card:nth-child(2) {
-  margin-top: var(--space-xl);
-}
-
-.pillar-card:nth-child(3) {
-  margin-top: calc(var(--space-xl) * -1);
 }
 
 .pillar-number {
@@ -1456,44 +1453,99 @@ img {
   box-shadow: 0 8px 40px rgba(255, 136, 17, 0.4);
 }
 
-.cta-result {
-  margin-top: var(--space-md);
+.cta-preview {
+  margin-top: var(--space-xl);
+  animation: resultAppear 0.8s var(--ease-out-expo) forwards;
+}
+
+.cta-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.cta-preview-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
   padding: var(--space-md);
-  background: rgba(74, 222, 128, 0.08);
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(74, 222, 128, 0.15);
-  animation: resultAppear 0.6s var(--ease-out-back) forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.cta-preview-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cta-preview-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+
+.cta-preview-icon.blue { background: rgba(37, 99, 235, 0.15); }
+.cta-preview-icon.orange { background: rgba(255, 136, 17, 0.15); }
+.cta-preview-icon.green { background: rgba(22, 163, 74, 0.15); }
+.cta-preview-icon.gold { background: rgba(217, 119, 6, 0.15); }
+
+.cta-preview-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.cta-preview-value {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.cta-preview-footer {
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cta-preview-footer p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: var(--space-sm);
+}
+
+.cta-preview-link {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 0.95rem;
+  transition: color var(--duration-fast) ease;
+}
+
+.cta-preview-link:hover {
+  color: var(--orange-light);
 }
 
 @keyframes resultAppear {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.95);
+    transform: translateY(20px);
   }
-
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
-}
-
-.cta-result-label {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 0.3rem;
-}
-
-.cta-result-value {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: #4ade80;
-}
-
-.cta-result-sub {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
-  margin-top: 0.3rem;
 }
 
 /* --- Footer --- */
@@ -2512,6 +2564,14 @@ img {
     width: 180px;
     height: 360px;
   }
+
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta-preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -2594,6 +2654,11 @@ img {
 
   .app-preview-phone:nth-child(2) {
     transform: none;
+  }
+
+  .cta-preview-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
   }
 
   .lang-switcher-desktop {

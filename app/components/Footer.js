@@ -20,14 +20,14 @@ export default function Footer() {
                         <ul className="footer-col-links">
                             <li><Link href="/#solution">Application</Link></li>
                             <li><Link href="/#piliers">Pulse Bridge</Link></li>
-                            <li><Link href="/simulateur">Simulateur Web</Link></li>
+                            <li><Link href="/simulation">Simulateur Web</Link></li>
                             <li><Link href="/pro">Espace Pro (Installateurs)</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="footer-col-title">Ressources</h4>
                         <ul className="footer-col-links">
-                            <li><Link href="/comment-ca-marche">Comment ça marche</Link></li>
+                            <li><Link href="/docs">Read Docs</Link></li>
                             <li><Link href="/blog">Blog & Actualités</Link></li>
                             <li><Link href="/blog#guide">Guide d'installation</Link></li>
                         </ul>

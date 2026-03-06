@@ -7,12 +7,6 @@ import {
 } from "./components/Icons";
 
 export default function Home() {
-  const [simResult, setSimResult] = useState(null);
-  const [facture, setFacture] = useState("");
-  const [wilaya, setWilaya] = useState("");
-
-
-
   const [activeFaq, setActiveFaq] = useState(null);
 
   useEffect(() => {
@@ -25,13 +19,7 @@ export default function Home() {
     return () => obs.disconnect();
   }, [activeFaq]); // Re-observe if FAQ expands
 
-  const handleSimulate = (e) => {
-    e.preventDefault();
-    const m = parseInt(facture);
-    if (!m || !wilaya) return;
-    const f = wilaya === "Sud" ? 0.65 : wilaya === "Hauts Plateaux" ? 0.55 : 0.45;
-    setSimResult(Math.round(m * 12 * f));
-  };
+
 
   const toggleFaq = (i) => setActiveFaq(activeFaq === i ? null : i);
 
@@ -44,24 +32,19 @@ export default function Home() {
           <div className="hero-content">
             <div className="hero-eyebrow">
               <span className="hero-eyebrow-dot" />
-              <span>Système d'Orchestration Énergétique</span>
+              <span>Système d&apos;Orchestration Énergétique</span>
             </div>
             <h1 className="t-display hero-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", letterSpacing: "-0.04em", lineHeight: "1.05", fontWeight: "500" }}>Votre toit peut <em>produire</em> votre énergie.</h1>
             <p className="t-subheading hero-subtitle">
-              Pulse.dz calcule votre potentiel solaire en 60 secondes, organise votre financement, et optimise votre production au quotidien grâce à l'IA.
+              Pulse.dz est le cerveau énergétique de votre maison. Prédisez les tempêtes, optimisez vos appareils et injectez votre surplus intelligemment dans le réseau algérien.
             </p>
             <div className="hero-actions">
-              <a href="/simulateur" className="btn-primary">
-                Faites le test (60s) <IconArrowRight size={18} style={{ marginLeft: "8px" }} />
+              <a href="/simulation" className="btn-primary">
+                Simuler gratuitement <IconArrowRight size={18} style={{ marginLeft: "8px" }} />
               </a>
-              <a href="/comment-ca-marche" className="btn-secondary">
-                Comment ça marche
+              <a href="/docs" className="btn-secondary">
+                Read Docs
               </a>
-            </div>
-            <div className="hero-stats">
-              <div><div className="hero-stat-value">12<span>,</span>400<span>+</span></div><div className="hero-stat-label">Simulations effectuées</div></div>
-              <div><div className="hero-stat-value">48 <span>wilayas</span></div><div className="hero-stat-label">Couvertes en Algérie</div></div>
-              <div><div className="hero-stat-value">2.8<span>M DA</span></div><div className="hero-stat-label">Économies générées</div></div>
             </div>
           </div>
           <div className="hero-visual">
@@ -79,9 +62,9 @@ export default function Home() {
       {/* ===== PROOF BAR ===== */}
       <section className="proof-bar">
         <div className="container proof-bar-inner reveal">
-          <div className="proof-item"><div className="proof-value">3,500<span>h</span></div><div className="proof-label">d'ensoleillement / an au Sahara</div></div>
-          <div className="proof-item"><div className="proof-value">40<span>%</span></div><div className="proof-label">perte par poussière non traitée</div></div>
-          <div className="proof-item"><div className="proof-value">0<span> DA</span></div><div className="proof-label">d'apport pour démarrer</div></div>
+          <div className="proof-item"><div className="proof-value">3,900<span>h</span></div><div className="proof-label">d&apos;ensoleillement / an (Max Algérie)</div></div>
+          <div className="proof-item"><div className="proof-value">40<span>%</span></div><div className="proof-label">de rendement perdu sans nettoyage</div></div>
+          <div className="proof-item"><div className="proof-value">0<span> DA</span></div><div className="proof-label">d&apos;apport initial (Financement)</div></div>
         </div>
       </section>
 
@@ -109,10 +92,10 @@ export default function Home() {
           </div>
           <div className="problems-grid">
             {[
-              { Icon: IconWind, cls: "sand", title: "Le Sirocco détruit vos rendements", desc: "Les tempêtes de sable réduisent l'efficacité de vos panneaux jusqu'à 40%. Sans alerte, vous perdez de l'argent sans le savoir.", sol: "Sirocco-Shield IA prédit et alerte" },
-              { Icon: IconMeter, cls: "meter", title: "Compteurs aveugles de Sonelgaz", desc: "Les compteurs actuels ne mesurent pas la production solaire. Votre surplus est invisible et perdu.", sol: "Pulse Bridge lit tout sans modification" },
-              { Icon: IconWallet, cls: "money", title: "Coût d'entrée prohibitif", desc: "L'investissement initial est trop élevé pour la majorité des foyers algériens — aucune banque ne propose un produit adapté.", sol: "Financement Mourabaha 0 apport" },
-              { Icon: IconClock, cls: "clock", title: "Décalage production / consommation", desc: "Vous produisez à midi quand personne n'est là. Vous consommez le soir quand le soleil disparaît.", sol: "L'IA optimise vos usages en temps réel" },
+              { Icon: IconWind, cls: "sand", title: "Le Sirocco détruit vos rendements", desc: "Les tempêtes de sable réduisent l'efficacité de vos panneaux jusqu'à 40% sans que vous ne le voyiez. On prédit le danger 24h avant.", sol: "Alerte de nettoyage prédictive" },
+              { Icon: IconMeter, cls: "meter", title: "Compteurs aveugles de Sonelgaz", desc: "Les compteurs actuels ne mesurent pas votre production solaire. Votre surplus est invisible, gaspillé et perdu pour le réseau.", sol: "Pulse Bridge : Lecture en temps réel" },
+              { Icon: IconWallet, cls: "money", title: "Coût d'entrée prohibitif", desc: "L'investissement initial reste le premier frein en Algérie — les solutions de financement classiques ne sont pas adaptées au solaire.", sol: "Dossier bancaire 0 apport automatisé" },
+              { Icon: IconClock, cls: "clock", title: "Décalage production / consommation", desc: "Vous produisez à midi quand vous êtes au travail, mais vous consommez le soir. L'énergie gratuite n'est jamais là quand on en a besoin.", sol: "IA d'orchestration de la consommation" },
             ].map((p, i) => (
               <div className={`problem-card reveal reveal-delay-${i + 1}`} key={i}>
                 <div className={`problem-icon ${p.cls}`}><p.Icon size={24} color={p.cls === "sand" ? "#d97706" : p.cls === "meter" ? "#2563eb" : p.cls === "money" ? "#16a34a" : "#db2777"} /></div>
@@ -129,14 +112,14 @@ export default function Home() {
       <section className="showcase" id="solution">
         <div className="container showcase-inner">
           <div className="showcase-content reveal">
-            <span className="t-label">L'application Pulse.dz</span>
+            <span className="t-label">L&apos;application Pulse.dz</span>
             <h2 className="t-display">Votre centrale solaire, dans votre poche.</h2>
             <p className="t-subheading">Production en temps réel, alertes intelligentes, financement intégré et optimisation IA — tout dans une seule application.</p>
             <div className="showcase-features">
               {[
-                { Icon: IconSatellite, t: "Monitoring en temps réel", d: "Production, consommation et batteries — visibles à chaque instant via le Pulse Bridge." },
-                { Icon: IconBrain, t: "IA prédictive Sirocco-Shield", d: "Anticipe les tempêtes de sable 48h à l'avance et protège votre investissement." },
-                { Icon: IconCreditCard, t: "Financement automatisé", d: "Dossier Mourabaha généré en 5 minutes, prêt pour dépôt en agence." },
+                { Icon: IconSatellite, t: "Bridge sans modification", d: "Un capteur intelligent qui se fixe simplement sur votre compteur actuel pour lire vos flux d'énergie seconde par seconde." },
+                { Icon: IconBrain, t: "Orchestration Intelligente", d: "L'IA vous dit quand lancer votre climatiseur, lave-linge ou pompe à eau pour utiliser votre propre énergie gratuite." },
+                { Icon: IconCreditCard, t: "Crédits Énergétiques", d: "Chaque surplus injecté est comptabilisé. Gagnez des crédits pour réduire drastiquement vos prochaines factures Sonelgaz." },
               ].map((f, i) => (
                 <div className="showcase-feature" key={i}>
                   <div className="showcase-feature-icon"><f.Icon size={20} color="#ff8811" /></div>
@@ -178,10 +161,10 @@ export default function Home() {
           </div>
           <div className="pillars-grid">
             {[
-              { n: "01", Icon: IconShield, cls: "orange", t: "Sirocco-Shield", d: "IA de prédiction des tempêtes de sable. Croise images satellites Copernicus, météo locale et données de luminosité du réseau Pulse pour alerter 48h à l'avance.", link: "/#solution" },
-              { n: "02", Icon: IconSatellite, cls: "blue", t: "Pulse Bridge IoT", d: "Capteur non-invasif qui se fixe sur votre compteur Sonelgaz. Transmission LoRaWAN — fonctionne sans Wi-Fi ni 4G, portée de 5 à 40 km.", link: "/#solution" },
-              { n: "03", Icon: IconDocument, cls: "green", t: "Green Sukuk", d: "Générateur automatique de dossiers Mourabaha. Scan OCR de la facture, simulation financière, export PDF prêt pour dépôt bancaire en 5 minutes.", link: "/comment-ca-marche" },
-              { n: "04", Icon: IconBolt, cls: "gold", t: "Réseau Pulse Pro", d: "Notre communauté d'installateurs premium et agents de nettoyage certifiés. On s'occupe de tout, du financement à l'installation.", link: "/pro" },
+              { n: "01", Icon: IconShield, cls: "orange", t: "Sirocco-Shield", d: "Notre IA croise les images Copernicus et la météo locale pour prédire les tempêtes 24h à l'avance et notifier le moment idéal pour un nettoyage.", link: "/docs#sirocco" },
+              { n: "02", Icon: IconSatellite, cls: "blue", t: "Pulse Bridge IoT", d: "Se fixe sur votre compteur existant (sans le remplacer). Utilise le réseau LoRaWAN pour transmettre vos données même sans Wi-Fi.", link: "/docs#bridge" },
+              { n: "03", Icon: IconDocument, cls: "green", t: "Dossier Green Sukuk", d: "Génère instantanément votre dossier Mourabaha. 0 DA d'apport, remboursé par vos propres économies d'énergie.", link: "/docs#financement" },
+              { n: "04", Icon: IconBolt, cls: "gold", t: "Réseau Pulse Pro", d: "Communauté d'installateurs et d'agents de nettoyage certifiés. On s'occupe de tout, du financement à l'entretien.", link: "/pro" },
             ].map((p, i) => (
               <a href={p.link} className={`pillar-card reveal reveal-delay-${i + 1}`} key={i} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
                 <span className="pillar-number">{p.n}</span>
@@ -215,9 +198,33 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: "center", marginTop: "var(--space-xl)" }} className="reveal">
-            <a href="/comment-ca-marche" style={{ color: "var(--blue)", fontWeight: "600", textDecoration: "underline" }}>Voir le processus détaillé →</a>
+            <a href="/docs" style={{ color: "var(--blue)", fontWeight: "600", textDecoration: "underline" }}>Read Docs →</a>
           </div>
         </div>
+      </section>
+
+      {/* ===== MISSION SECTION ===== */}
+      <section className="mission" style={{ background: "var(--blue)", color: "white", padding: "var(--space-3xl) 0", position: "relative", overflow: "hidden" }}>
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div className="reveal" style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
+            <span className="t-label" style={{ color: "var(--orange-light)" }}>Notre Vision</span>
+            <h2 className="t-display" style={{ color: "white", marginBottom: "var(--space-lg)" }}>Le maillon manquant de l&apos;énergie solaire en Algérie.</h2>
+            <p className="t-subheading" style={{ color: "rgba(255,255,255,0.7)", fontSize: "1.25rem", lineHeight: "1.6" }}>
+              Le soleil est là, la technologie existe, mais quatre obstacles bloquaient l&apos;adoption : le sable, les compteurs aveugles, le coût initial et le décalage horaire production/consommation.
+            </p>
+            <div style={{ marginTop: "var(--space-xl)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-xl)", textAlign: "left" }}>
+              <div className="reveal reveal-delay-1">
+                <h4 style={{ color: "var(--orange-light)", marginBottom: "0.5rem" }}>Intelligence Locale</h4>
+                <p style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.6)" }}>Un cerveau domotique conçu pour la réalité algérienne, pas un produit copié d&apos;ailleurs.</p>
+              </div>
+              <div className="reveal reveal-delay-2">
+                <h4 style={{ color: "var(--orange-light)", marginBottom: "0.5rem" }}>0 Apport Initial</h4>
+                <p style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.6)" }}>Démocratiser le solaire avec un financement bancaire remboursé par vos propres économies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{ position: "absolute", bottom: "-100px", left: "50%", transform: "translateX(-50%)", width: "800px", height: "400px", background: "radial-gradient(ellipse at center, rgba(255,136,17,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
       </section>
 
       <hr className="section-divider" />
@@ -226,8 +233,8 @@ export default function Home() {
       <section className="app-preview" id="apercu">
         <div className="container">
           <div className="app-preview-header reveal">
-            <span className="t-label">Aperçu de l'application</span>
-            <h2 className="t-display">3 écrans qui changent votre rapport à l'énergie.</h2>
+            <span className="t-label">Aperçu de l&apos;application</span>
+            <h2 className="t-display">3 écrans qui changent votre rapport à l&apos;énergie.</h2>
           </div>
           <div className="app-preview-track reveal">
             {/* Phone 1 — Simulator */}
@@ -270,7 +277,7 @@ export default function Home() {
                   </div>
                   <div style={{ background: "rgba(255,136,17,0.1)", borderRadius: "12px", padding: "10px", border: "1px solid rgba(255,136,17,0.1)", display: "flex", gap: "6px", alignItems: "flex-start" }}>
                     <IconLightbulb size={12} color="#ff8811" />
-                    <div style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>Lancez vos appareils maintenant pour maximiser l'autoconsommation.</div>
+                    <div style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>Lancez vos appareils maintenant pour maximiser l&apos;autoconsommation.</div>
                   </div>
                 </div>
               </div>
@@ -310,7 +317,7 @@ export default function Home() {
           <div className="testimonials-layout">
             <div className="testimonial-featured reveal">
               <span className="testimonial-quote-mark">"</span>
-              <p className="testimonial-text">En 3 mois, ma facture Sonelgaz est passée de 8 000 DA à 4 200 DA. Le jour de la tempête de sable, j'ai reçu l'alerte 18 heures avant. Pulse.dz m'a convaincu que le solaire, c'est sérieux.</p>
+              <p className="testimonial-text">En 3 mois, ma facture Sonelgaz est passée de 8 000 DA à 4 200 DA. Le jour de la tempête de sable, j&apos;ai reçu l&apos;alerte 18 heures avant. Pulse.dz m&apos;a convaincu que le solaire, c&apos;est sérieux.</p>
               <div className="testimonial-author">
                 <div className="testimonial-avatar">A</div>
                 <div>
@@ -367,61 +374,7 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="section-divider" />
 
-      {/* ===== CTA + SIMULATOR ===== */}
-      <section className="cta-section" id="simuler">
-        <div className="container">
-          <div className="cta-card">
-            <h2 className="t-display">Combien votre toit peut-il vous faire économiser&nbsp;?</h2>
-            <p className="t-subheading">Entrez votre facture et votre wilaya — résultat instantané, 100% gratuit.</p>
-            <form className="cta-simulator" onSubmit={handleSimulate}>
-              <div className="cta-simulator-row">
-                <div className="cta-input-group">
-                  <label className="cta-input-label">Facture moyenne (DA / mois)</label>
-                  <input
-                    type="number"
-                    className="cta-input"
-                    placeholder="Ex: 6000"
-                    value={facture}
-                    onChange={(e) => setFacture(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="cta-input-group">
-                  <label className="cta-input-label">Votre Wilaya</label>
-                  <select
-                    className="cta-input"
-                    value={wilaya}
-                    onChange={(e) => setWilaya(e.target.value)}
-                    required
-                    style={{ appearance: "none", cursor: "pointer" }}
-                  >
-                    <option value="" disabled>Sélectionner...</option>
-                    <option value="Nord">Nord (Alger, Oran, Constantine...)</option>
-                    <option value="Hauts Plateaux">Hauts Plateaux (Sétif, Tiaret...)</option>
-                    <option value="Sud">Sud (Adrar, Ghardaïa, Ouargla...)</option>
-                  </select>
-                </div>
-                <div className="cta-input-group">
-                  <button type="submit" className="btn-primary" style={{ height: "54px", width: "100%", justifyContent: "center" }}>
-                    Calculer mes économies <IconArrowRight size={18} style={{ marginLeft: "8px" }} />
-                  </button>
-                </div>
-              </div>
-              {simResult && (
-                <div className="cta-result reveal visible">
-                  <div className="cta-result-label">Économie annuelle estimée</div>
-                  <div className="cta-result-value">{simResult.toLocaleString("fr-FR")} DA / an</div>
-                  <div className="cta-result-sub">
-                    Basé sur l'ensoleillement moyen de votre région. Pour un dossier complet, <a href="/simulateur" style={{ color: "var(--orange)", fontWeight: "600", textDecoration: "underline" }}>utilisez le simulateur avancé</a>.
-                  </div>
-                </div>
-              )}
-            </form>
-          </div>
-        </div>
-      </section>
 
     </>
   );
