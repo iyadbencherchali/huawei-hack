@@ -25,11 +25,21 @@ export default function Docs() {
         
         <div className="docs-item" id="city-map">
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
-            <span style={{ fontSize: "24px" }}>🏙️</span>
-            <h3 className="t-subtitle" style={{ color: "var(--blue)", margin: 0 }}>City Map Analysis</h3>
+            <span style={{ fontSize: "24px" }}>🌍</span>
+            <h3 className="t-subtitle" style={{ color: "var(--blue)", margin: 0 }}>Solar Algeria Map</h3>
           </div>
           <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "var(--text-secondary)" }}>
-            Our rooftop analysis uses high-resolution satellite data to calculate the exact square meters of usable space. We factor in the orientation, shading from nearby buildings, and the regional 1,700–2,300 kWh/m² annual irradiance. This allows us to predict system yields with 94% accuracy before a single technician visits the site.
+            Our national solar map has expanded to cover all 58 wilayas, with over 130 high-resolution data points. We use satellite irradiance modeling (1,700–2,400 kWh/m²) to identify high-potential zones from Algiers to Tamanrasset. The interface is optimized for rapid exploration, removing clutter to prioritize pure solar data visualization.
+          </p>
+        </div>
+
+        <div className="docs-item" id="simulation">
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+            <span style={{ fontSize: "24px" }}>📐</span>
+            <h3 className="t-subtitle" style={{ color: "var(--blue)", margin: 0 }}>Premium Solar Simulation</h3>
+          </div>
+          <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "var(--text-secondary)" }}>
+            The Pulse.dz simulator is an editorial-grade configurator. It allows users to identify their own rooftop via satellite and receive a bespoke financial and technical report. We benchmark your project against regional standards to provide a realistic view of ROI, autonomy, and grid interaction.
           </p>
         </div>
 
@@ -39,7 +49,7 @@ export default function Docs() {
             <h3 className="t-subtitle" style={{ color: "var(--blue)", margin: 0 }}>AI Orchestration (Sirocco-Shield)</h3>
           </div>
           <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "var(--text-secondary)" }}>
-            Sirocco-Shield is not just a protector; it's a scheduler. By predicting the 24-hour solar curve, the AI identifies "Net-Zero Windows" where your free solar production exceeds your home's base load. It then prioritizes running appliances (ACs, pumps) during these windows, effectively treating your appliances as "thermal batteries."
+            Sirocco-Shield intelligently orchestrates your energy flow based on real-time solar yield and consumption patterns. By predicting sandstorms and identifying "Net-Zero Windows," the AI optimizes your energy usage to maximize savings and protect your hardware investment.
           </p>
         </div>
 
