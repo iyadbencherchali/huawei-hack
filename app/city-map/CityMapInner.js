@@ -25,8 +25,8 @@ export default function CityMapInner({ buildings, onSelect, selected }) {
 
       if (!mapInstanceRef.current) {
         const map = L.map(mapRef.current, {
-          center: [36.742, 3.055],
-          zoom: 12,
+          center: [28.0339, 1.6596],
+          zoom: 5,
           zoomControl: false,
         });
 

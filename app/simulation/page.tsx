@@ -6,9 +6,13 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { X, Menu, Loader2, Search, MapPin, Check } from "lucide-react";
+import { X, Menu, Loader2, Search, MapPin, Check, Bolt, ArrowRight } from "lucide-react";
 import { ResultsModal } from "@/components/results-modal";
 import dynamic from "next/dynamic";
+
+// Dummy icons for the new layout if they don't exist in lucide
+const IconBolt = Bolt;
+const IconArrowRight = ArrowRight;
 
 // 🇩🇿 Realistic Algeria Solar Constants
 const SOLAR_CONFIG = {
@@ -414,272 +418,210 @@ export default function SimulationPage() {
   }, []);
 
   return (
-    <div className="flex bg-gray-50 min-h-screen font-sans">
-      {/* Sidebar */}
-      <aside className="w-20 lg:w-64 bg-white border-r border-gray-200 flex flex-col items-center lg:items-start py-6 transition-all duration-300">
-        <div className="flex items-center px-0 lg:px-6 mb-12">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30">
+    <div className="sim-page font-sans">
+      {/* Premium Top Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 bg-[#050035] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
             <span className="text-white font-bold text-xl">P</span>
           </div>
-          <span className="ml-3 hidden lg:block text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Pulse.dz</span>
+          <span className="text-xl font-black tracking-tight text-[#050035]">Pulse.dz</span>
+        </Link>
+        <div className="flex items-center gap-6">
+          <Link href="/" className="text-sm font-bold text-gray-500 hover:text-[#050035] transition-colors">Accueil</Link>
+          <Link href="/simulation/methodology" className="px-5 py-2.5 bg-[#050035] text-white rounded-full text-sm font-bold shadow-lg shadow-blue-900/20 hover:scale-105 transition-all">Documentation</Link>
         </div>
+      </nav>
 
-        <nav className="flex-1 w-full flex flex-col gap-2 px-3">
-          <Link href="/" className="flex items-center p-3 text-gray-500 rounded-xl hover:bg-gray-50 hover:text-primary transition-all group">
-            <div className="relative">
-              <span className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform"></span>
-              <svg className="w-6 h-6 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-            </div>
-            <span className="ml-3 hidden lg:block font-medium">Accueil</span>
-          </Link>
-          <div className="flex items-center p-3 bg-primary/10 text-primary rounded-xl transition-all font-semibold relative overflow-hidden group">
-            <svg className="w-6 h-6 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-            <span className="ml-3 hidden lg:block relative z-10">Simulation</span>
+      <div className="sim-container">
+        {/* Header Section */}
+        <header className="sim-header">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6 border border-orange-100">
+            <IconBolt size={12} /> Intelligence Solaire 2.0
           </div>
-          <Link href="/simulation/methodology" className="flex items-center p-3 text-gray-500 rounded-xl hover:bg-gray-50 hover:text-primary transition-all group">
-            <div className="relative">
-              <span className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform"></span>
-              <svg className="w-6 h-6 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-            </div>
-            <span className="ml-3 hidden lg:block font-medium">Documentation</span>
-          </Link>
-        </nav>
-
-        {/* Methodology Info - visible on large screens */}
-        <div className="hidden lg:block px-4 mt-auto">
-          <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-            <h4 className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-3">📐 Méthodologie</h4>
-            <ul className="space-y-2.5 text-[11px] text-gray-500 leading-relaxed">
-              <li className="flex gap-2">
-                <span className="text-yellow-500 font-bold mt-0.5">☀</span>
-                <span><strong className="text-gray-700">Irradiance</strong> — Basée sur la zone géographique (1700–2300 kWh/kWp/an)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-blue-500 font-bold mt-0.5">⚡</span>
-                <span><strong className="text-gray-700">Dimensionnement</strong> — Système adapté à votre consommation (min 3 kW)</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-orange-500 font-bold mt-0.5">💰</span>
-                <span><strong className="text-gray-700">Coût</strong> — 220 000 DA/kW, tarif Sonelgaz 8.5 DA/kWh</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-green-500 font-bold mt-0.5">📊</span>
-                <span><strong className="text-gray-700">Score</strong> — Pondéré: irradiance 40%, toit 25%, type 15%, conso 20%</span>
-              </li>
-            </ul>
-            <div className="mt-3 pt-3 border-t border-gray-200">
-              <p className="text-[10px] text-gray-400">Source: Atlas Solaire Algérien (CDER) • Efficacité système: 80% • Dégradation: 0.5%/an</p>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col h-screen overflow-hidden">
-        {/* Top Header */}
-        <header className="h-20 bg-white/80 backdrop-blur-md border-b border-gray-200 flex items-center justify-between px-8 z-10">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-800">Nouvelle Simulation</h1>
-            <p className="text-sm text-gray-500 mt-0.5">Estimez votre production et vos économies solaires</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-green-50 text-green-600 rounded-full border border-green-100 text-sm font-medium">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              Algorithme Précis
-            </div>
-          </div>
+          <h1 className="t-display text-5xl md:text-7xl mb-6 text-[#050035]">
+            Configurez Votre <span className="text-gradient">Futur.</span>
+          </h1>
+          <p className="t-subheading max-w-2xl mx-auto opacity-70 leading-relaxed font-medium">
+            Analysez instantanément le potentiel photovoltaïque de votre propriété. Notre algorithme croise vos données de consommation avec l&apos;ensoleillement satellite local.
+          </p>
         </header>
 
-        {/* Dashboard Content Grid */}
-        <div className="flex-1 overflow-auto p-4 md:p-8">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 h-full">
+        <div className="sim-grid mt-12">
+          {/* CONFIGURATION COLUMN */}
+          <div className="space-y-6">
+            <div className="sim-card sim-glass relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-orange-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              
+              <h2 className="t-display text-2xl mb-8 flex items-center gap-3 text-[#050035]">
+                Paramètres du Projet
+              </h2>
 
-            {/* Left Column: Form Setup */}
-            <div className="lg:col-span-5 flex flex-col gap-6">
-
-              {/* Location Card */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 transition-all hover:shadow-md">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                    <MapPin className="w-5 h-5" />
+              <div className="space-y-6">
+                {/* Location Input */}
+                <div className="sim-input-group" ref={searchRef}>
+                  <label className="sim-label">Adresse de l&apos;installation</label>
+                  <div className="relative">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <input
+                      type="text"
+                      className="sim-input pl-12"
+                      placeholder="Ex: Bab Ezzouar, Alger"
+                      value={searchQuery}
+                      onChange={(e) => handleSearch(e.target.value)}
+                      onFocus={() => setShowSearchResults(searchResults.length > 0)}
+                    />
+                    {searchLoading && <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin text-gray-400" />}
                   </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-gray-900">Emplacement</h2>
-                    <p className="text-xs text-gray-500">Où se trouve votre bâtiment ?</p>
-                  </div>
-                </div>
-
-                <div className="relative" ref={searchRef}>
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <input
-                    type="text"
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                    placeholder="Cherchez une adresse ou cliquez sur la carte..."
-                    value={searchQuery}
-                    onChange={(e) => handleSearch(e.target.value)}
-                    onFocus={() => setShowSearchResults(searchResults.length > 0)}
-                  />
-                  {searchLoading && <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin text-gray-400" />}
 
                   {showSearchResults && searchResults.length > 0 && (
-                    <div className="absolute z-50 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-xl max-h-60 overflow-y-auto">
+                    <div className="absolute z-50 w-full mt-2 bg-white/95 backdrop-blur-xl border border-gray-100 rounded-2xl shadow-2xl max-h-60 overflow-y-auto p-2">
                       {searchResults.map((result, index) => (
                         <div
                           key={index}
-                          className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-50 last:border-0 transition-colors"
+                          className="px-4 py-3 hover:bg-orange-50 cursor-pointer rounded-xl transition-colors flex items-start gap-4"
                           onClick={() => handleSearchResultSelect(result)}
                         >
-                          <div className="flex items-start">
-                            <MapPin className="h-4 w-4 text-gray-400 mt-0.5 mr-2" />
-                            <div>
-                              <div className="text-sm font-semibold text-gray-900">{result.city}</div>
-                              <div className="text-xs text-gray-500 leading-tight mt-0.5">{result.address}</div>
-                            </div>
+                          <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                            <MapPin className="h-4 w-4 text-orange-500" />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-sm font-bold text-[#050035] truncate">{result.city}</div>
+                            <div className="text-[10px] text-gray-500 leading-tight mt-0.5 truncate">{result.address}</div>
                           </div>
                         </div>
                       ))}
                     </div>
                   )}
+
+                  {selectedLocation && (
+                    <div className="mt-4 p-4 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center gap-4 text-emerald-900 animate-in fade-in slide-in-from-top-2">
+                      <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white flex-shrink-0 shadow-lg shadow-emerald-500/20">
+                        <Check size={16} strokeWidth={3} />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-[10px] uppercase tracking-wider font-black opacity-50">Localisation Confirmée</div>
+                        <div className="text-xs font-bold truncate">{selectedLocation.city || selectedLocation.address}</div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {selectedLocation && (
-                  <div className="mt-4 p-3 bg-green-50/50 border border-green-100 rounded-xl flex items-center gap-2 text-green-700 animate-in fade-in slide-in-from-top-2">
-                    <Check className="h-4 w-4 flex-shrink-0" />
-                    <span className="text-sm font-medium truncate">{selectedLocation.city || selectedLocation.address}</span>
+                <div className="grid grid-cols-2 gap-5">
+                  <div className="sim-input-group">
+                    <label className="sim-label">Surface (m²)</label>
+                    <input
+                      type="number"
+                      className="sim-input"
+                      placeholder="Ex: 120"
+                      value={formData.roofSurface}
+                      onChange={(e) => handleInputChange('roofSurface', e.target.value)}
+                    />
                   </div>
-                )}
-              </div>
-
-              {/* Home Data Card */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex-1 transition-all hover:shadow-md">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-gray-900">Données du Bâtiment</h2>
-                    <p className="text-xs text-gray-500">Pour un calcul personnalisé</p>
+                  <div className="sim-input-group">
+                    <label className="sim-label">Type de Toit</label>
+                    <Select value={formData.roofType} onValueChange={(value) => handleInputChange('roofType', value)}>
+                      <SelectTrigger className="w-full sim-input bg-gray-50 border-gray-200 h-auto py-[13.5px]">
+                        <SelectValue placeholder="Choisir..." />
+                      </SelectTrigger>
+                      <SelectContent className="rounded-xl">
+                        <SelectItem value="flat">Toit Plat</SelectItem>
+                        <SelectItem value="inclined">Toit Incliné</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
 
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                        Surface Toiture
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="number"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
-                          placeholder="Ex: 120"
-                          value={formData.roofSurface}
-                          onChange={(e) => handleInputChange('roofSurface', e.target.value)}
-                        />
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">m²</span>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                        Type
-                      </label>
-                      <Select value={formData.roofType} onValueChange={(value) => handleInputChange('roofType', value)}>
-                        <SelectTrigger className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all flex items-center justify-between font-medium">
-                          <SelectValue placeholder="Choisir...">
-                            {formData.roofType === 'flat' ? 'Toit plat' : formData.roofType === 'inclined' ? 'Toit incliné' : undefined}
-                          </SelectValue>
-                          <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="flat">Toit plat</SelectItem>
-                          <SelectItem value="inclined">Toit incliné</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                <div className="grid grid-cols-2 gap-5">
+                  <div className="sim-input-group">
+                    <label className="sim-label">Conso. (kWh/an)</label>
+                    <input
+                      type="number"
+                      className="sim-input"
+                      placeholder="Ex: 4500"
+                      value={formData.electricityConsumption}
+                      onChange={(e) => handleInputChange('electricityConsumption', e.target.value)}
+                    />
                   </div>
-
-                  <hr className="border-gray-100" />
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                        Conso. Annuelle
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="number"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
-                          placeholder="Ex: 1500"
-                          value={formData.electricityConsumption}
-                          onChange={(e) => handleInputChange('electricityConsumption', e.target.value)}
-                        />
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">kWh</span>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                        Coût Annuel
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="number"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
-                          placeholder="Ex: 90000"
-                          value={formData.annualElectricityCost}
-                          onChange={(e) => handleInputChange('annualElectricityCost', e.target.value)}
-                        />
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">DA</span>
-                      </div>
-                    </div>
+                  <div className="sim-input-group">
+                    <label className="sim-label">Budget (DA/an)</label>
+                    <input
+                      type="number"
+                      className="sim-input"
+                      placeholder="Ex: 85000"
+                      value={formData.annualElectricityCost}
+                      onChange={(e) => handleInputChange('annualElectricityCost', e.target.value)}
+                    />
                   </div>
+                </div>
 
-                  <Button
-                    className="w-full mt-4 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white rounded-xl py-6 text-base font-semibold shadow-lg shadow-orange-500/20 transition-all active:scale-[0.98] border-0"
-                    onClick={runSimulation}
-                    disabled={!isFormValid || simulationLoading}
-                  >
+                <Button
+                  className="w-full btn-primary py-8 text-lg font-black shadow-2xl shadow-orange-500/30 group relative overflow-hidden mt-4"
+                  onClick={runSimulation}
+                  disabled={!isFormValid || simulationLoading}
+                  style={{ borderRadius: '20px' }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <span className="relative z-10 flex items-center justify-center gap-3">
                     {simulationLoading ? (
-                      <span className="flex items-center gap-2">
-                        <Loader2 className="h-5 w-5 animate-spin" /> Analyse en cours...
-                      </span>
+                      <>
+                        <Loader2 className="h-6 w-6 animate-spin" /> Analyse...
+                      </>
                     ) : (
-                      "Lancer la Simulation"
+                      <>
+                        Calculer mon Potentiel <IconArrowRight size={22} />
+                      </>
                     )}
-                  </Button>
-                </div>
+                  </span>
+                </Button>
               </div>
             </div>
 
-            {/* Right Column: Interactive Map */}
-            <div className="lg:col-span-7 h-[400px] lg:h-auto min-h-[500px] bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative group">
-              <div className="absolute top-4 left-4 z-10 flex gap-2 pointer-events-none">
-                <div className="px-3 py-1.5 bg-white/90 backdrop-blur shadow-sm rounded-lg text-xs font-bold text-gray-700 flex items-center gap-2 border border-gray-100 pointer-events-auto">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                  </span>
-                  Carte Interactive
-                </div>
-              </div>
+            <div className="p-8 bg-[#050035] rounded-3xl text-white relative overflow-hidden shadow-2xl">
+               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-400/20 to-transparent"></div>
+               <div className="relative z-10 flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 backdrop-blur flex items-center justify-center text-orange-400 flex-shrink-0 border border-white/10">
+                    <IconBolt size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-black uppercase tracking-widest text-orange-400 mb-2">Moteur de Calcul V2</h4>
+                    <p className="text-xs opacity-60 leading-relaxed font-medium">Calcul basé sur l&apos;irradiance globale horizontale (GHI) et les indices de performance PR (Performance Ratio) standardisés pour le climat maghrébin.</p>
+                  </div>
+               </div>
+            </div>
+          </div>
+
+          {/* MAP COLUMN */}
+          <div className="order-first lg:order-last">
+            <div className="sim-card relative overflow-hidden p-0 h-[500px] lg:h-[750px] border-0 shadow-2xl rounded-[32px]">
               <LeafletMap
                 onSelectLocation={handleMapClick}
                 selectedLocation={selectedLocation}
-                className="w-full h-full z-0"
+                className="w-full h-full grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
               />
-              {!selectedLocation && (
-                <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center bg-gray-900/5 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0">
-                  <div className="bg-white/90 backdrop-blur shadow-lg rounded-2xl p-4 text-center border border-gray-100">
-                    <MapPin className="h-8 w-8 text-primary mx-auto mb-2 animate-bounce" />
-                    <p className="font-semibold text-gray-800">Sélectionnez votre position</p>
-                    <p className="text-xs text-gray-500 mt-1">Cliquez sur la carte pour définir l'emplacement</p>
-                  </div>
-                </div>
-              )}
-            </div>
+              
 
+              <div className="absolute bottom-8 left-8 z-10 pointer-events-none">
+                 <div className="px-5 py-3.5 bg-white/95 backdrop-blur-xl border border-gray-100 rounded-2xl shadow-2xl flex items-center gap-4">
+                    <div className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </div>
+                    <span className="text-[10px] font-black text-[#050035] uppercase tracking-[0.2em]">Satellite Active • 2026 Data</span>
+                 </div>
+              </div>
+            </div>
           </div>
         </div>
-      </main>
+
+        <footer className="mt-24 pb-12 text-center opacity-30 hover:opacity-100 transition-all duration-700 cursor-default">
+           <p className="text-[10px] font-black text-[#050035] uppercase tracking-[0.3em] mb-4">
+             Pulse.dz Infrastructure Solaire • Algérie
+           </p>
+           <div className="w-12 h-0.5 bg-orange-500 mx-auto mb-4 opacity-50"></div>
+           <p className="text-[10px] text-gray-500 max-w-lg mx-auto leading-relaxed">Les résultats sont des estimations informatiques basées sur l&apos;historique météorologique. Une expertise sur site est nécessaire avant toute installation.</p>
+        </footer>
+      </div>
 
       <ResultsModal
         open={resultModalOpen}
