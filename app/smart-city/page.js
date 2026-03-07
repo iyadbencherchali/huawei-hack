@@ -20,19 +20,11 @@ const MONTHS        = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oc
 
 const BUILDING_TYPES = ["All", "Residential", "Commercial", "Industrial", "Mixed"];
 
-const AI_SCENARIOS = [
-  { title: "Rouiba Industrial Max-Out",   addedMW: 42,  addedHomes: 18000, co2: 20.5, timeline: "8 mo",  confidence: "96%", color: "#10b981" },
-  { title: "Kouba Residential Rollout",   addedMW: 12,  addedHomes: 5200,  co2: 5.8,  timeline: "14 mo", confidence: "88%", color: "#f59e0b" },
-  { title: "Dely Ibrahim Commercial Hub", addedMW: 18,  addedHomes: 7800,  co2: 8.8,  timeline: "18 mo", confidence: "82%", color: "#3b82f6" },
-  { title: "Hussein Dey Urban Grid",      addedMW: 6,   addedHomes: 2600,  co2: 2.9,  timeline: "24 mo", confidence: "74%", color: "#c084fc" },
-];
-
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function SmartCityDashboard() {
   const [districtFilter,  setDistrictFilter]  = useState("All");
   const [typeFilter,      setTypeFilter]      = useState("All");
   const [chartMode,       setChartMode]       = useState("production");
-  const [showExpansion,   setShowExpansion]   = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState(null);
 
   const filtered = DISTRICTS.filter(d =>
@@ -66,15 +58,9 @@ export default function SmartCityDashboard() {
                 🏙️ Smart City Impact
               </h1>
               <p style={{ color: "rgba(255,255,255,0.6)", maxWidth: "580px", lineHeight: 1.5, fontSize: "0.95rem" }}>
-                City-wide renewable energy dashboard tracking solar adoption, CO₂ impact, and AI-driven projections across all districts.
+                City-wide renewable energy dashboard tracking solar adoption and CO₂ impact across all districts.
               </p>
             </div>
-            <button
-              onClick={() => setShowExpansion(true)}
-              style={{ background: "linear-gradient(135deg, #f59e0b, #d97706)", border: "none", color: "white", padding: "14px 22px", borderRadius: "12px", fontWeight: 700, cursor: "pointer", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "8px", whiteSpace: "nowrap", boxShadow: "0 8px 24px rgba(245,158,11,0.3)" }}
-            >
-              🤖 Simulate Expansion Scenario
-            </button>
           </div>
 
           {/* Big KPIs */}
@@ -261,30 +247,6 @@ export default function SmartCityDashboard() {
               </div>
             </div>
 
-            {/* AI Predictions */}
-            <div style={{ background: "linear-gradient(135deg, #0f172a, #1E3A5F)", borderRadius: "16px", padding: "24px", color:"white" }}>
-              <div style={{ display:"flex", alignItems:"center", gap:"10px", marginBottom:"16px" }}>
-                <span style={{ fontSize:"1.3rem"}}>🤖</span>
-                <div>
-                  <h3 style={{ fontWeight:700, fontSize:"0.95rem", margin:0 }}>AI Predictions</h3>
-                  <div style={{ fontSize:"0.7rem", color:"rgba(255,255,255,0.5)" }}>Huawei Cloud AI · 2026–2028</div>
-                </div>
-              </div>
-              {[
-                { label:"City-wide capacity target",  value:"500 MW",  by:"2028", color:"#f59e0b" },
-                { label:"CO₂ reduction goal",         value:"800 t",   by:"2028", color:"#10b981" },
-                { label:"Adoption rate target",        value:"80%",    by:"2030", color:"#c084fc" },
-                { label:"Homes to be powered",         value:"150k+",  by:"2028", color:"#60a5fa" },
-              ].map((p,i) => (
-                <div key={i} style={{ display:"flex", justifyContent:"space-between", padding:"10px 0", borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
-                  <span style={{ fontSize:"0.78rem", color:"rgba(255,255,255,0.6)", fontWeight:600 }}>{p.label}</span>
-                  <div style={{ textAlign:"right" }}>
-                    <div style={{ fontWeight:800, color:p.color, fontSize:"0.9rem" }}>{p.value}</div>
-                    <div style={{ fontSize:"0.62rem", color:"rgba(255,255,255,0.35)" }}>by {p.by}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
 
             {/* Global Analytics Guide */}
             <div style={{ background: "white", borderRadius: "16px", padding: "20px", border: "1px solid #e2e8f0" }}>
@@ -314,48 +276,6 @@ export default function SmartCityDashboard() {
         </div>
       </div>
 
-      {/* ── Expansion Scenario Modal ── */}
-      {showExpansion && (
-        <div style={{ position:"fixed", inset:0, background:"rgba(0,0,0,0.55)", zIndex:9999, display:"flex", alignItems:"center", justifyContent:"center", padding:"20px" }} onClick={() => setShowExpansion(false)}>
-          <div style={{ background:"white", borderRadius:"24px", padding:"40px", maxWidth:"620px", width:"100%", maxHeight:"85vh", overflowY:"auto" }} onClick={e=>e.stopPropagation()}>
-            <div style={{ textAlign:"center", marginBottom:"28px" }}>
-              <div style={{ fontSize:"2.5rem", marginBottom:"10px" }}>🤖</div>
-              <h2 style={{ fontFamily:"var(--font-display)", fontSize:"1.5rem", color:"var(--blue)", marginBottom:"8px" }}>Simulate Expansion Scenario</h2>
-              <p style={{ color:"var(--text-secondary)", fontSize:"0.9rem", lineHeight:1.6 }}>Huawei Cloud AI identifies the highest-impact zones for solar expansion based on roof density, irradiation, and social equity scores.</p>
-            </div>
-
-            <div style={{ display:"flex", flexDirection:"column", gap:"14px", marginBottom:"24px" }}>
-              {AI_SCENARIOS.map((s, i) => (
-                <div key={i} style={{ background:`${s.color}08`, borderRadius:"14px", padding:"18px 20px", border:`1px solid ${s.color}33`, display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-                  <div style={{ flex:1 }}>
-                    <div style={{ fontWeight:700, color:"var(--text-primary)", marginBottom:"4px" }}>{s.title}</div>
-                    <div style={{ fontSize:"0.78rem", color:"var(--text-secondary)", display:"flex", gap:"12px" }}>
-                      <span>🏠 +{s.addedHomes.toLocaleString()} homes</span>
-                      <span>🌱 {s.co2} t CO₂/yr</span>
-                      <span>⏱️ {s.timeline}</span>
-                      <span>🎯 {s.confidence} confidence</span>
-                    </div>
-                  </div>
-                  <div style={{ fontWeight:800, color:s.color, fontSize:"1.2rem", marginLeft:"16px", whiteSpace:"nowrap" }}>+{s.addedMW} MW</div>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ background:"rgba(30,58,95,0.04)", borderRadius:"12px", padding:"16px 20px", marginBottom:"20px", border:"1px solid rgba(30,58,95,0.08)" }}>
-              <div style={{ fontSize:"0.8rem", color:"var(--text-muted)", fontWeight:600, textTransform:"uppercase", marginBottom:"8px" }}>Total Expansion Impact</div>
-              <div style={{ display:"flex", gap:"24px", flexWrap:"wrap" }}>
-                <div><span style={{ fontWeight:800, color:"var(--blue)", fontSize:"1.2rem" }}>+78 MW</span> <span style={{ fontSize:"0.78rem", color:"var(--text-muted)" }}>capacity</span></div>
-                <div><span style={{ fontWeight:800, color:"#10b981", fontSize:"1.2rem" }}>+33,600</span> <span style={{ fontSize:"0.78rem", color:"var(--text-muted)" }}>homes</span></div>
-                <div><span style={{ fontWeight:800, color:"#f59e0b", fontSize:"1.2rem" }}>38 t</span> <span style={{ fontSize:"0.78rem", color:"var(--text-muted)" }}>CO₂/yr</span></div>
-              </div>
-            </div>
-
-            <button onClick={() => setShowExpansion(false)} style={{ display:"block", width:"100%", padding:"14px", background:"var(--blue)", color:"white", border:"none", borderRadius:"12px", fontWeight:700, fontSize:"1rem", cursor:"pointer" }}>
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
