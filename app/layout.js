@@ -3,35 +3,36 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export const metadata = {
-  title: "Pulse.dz — L'énergie intelligente pour chaque toit algérien",
+  title: "Pulse.dz — Smart AI Solutions for Renewable Urban Energy",
   description:
-    "Pulse.dz calcule votre potentiel solaire en 60 secondes, organise votre financement Mourabaha, et optimise votre production au quotidien grâce à l'IA. 48 wilayas couvertes.",
+    "Pulse.dz calculates your solar potential in 60 seconds, automates your financing, and optimizes your production daily using AI. Available across all 69 wilayas.",
   keywords: [
-    "panneau solaire Algérie",
-    "simulation solaire Algérie",
-    "financement solaire Algérie",
-    "énergie solaire",
+    "solar panels Algeria",
+    "solar simulation Algeria",
+    "solar financing Algeria",
+    "renewable energy",
     "Pulse.dz",
     "Sonelgaz",
-    "Mourabaha solaire",
+    "smart city solar",
+    "Huawei Cloud AI",
   ],
   openGraph: {
-    title: "Pulse.dz — Votre toit peut produire votre énergie",
-    description: "Simulez vos économies solaires en 60 secondes. Financement 0 apport, IA prédictive Sirocco-Shield, monitoring en temps réel.",
+    title: "Pulse.dz — Your Roof Can Power Your Life",
+    description: "Simulate your solar savings in 60 seconds. Zero-down financing, AI-driven Sirocco-Shield, real-time energy monitoring.",
     type: "website",
-    locale: "fr_DZ",
+    locale: "en_US",
     siteName: "Pulse.dz",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pulse.dz — L'énergie intelligente pour chaque toit algérien",
-    description: "Simulez vos économies solaires en 60 secondes. Financement 0 apport.",
+    title: "Pulse.dz — AI-Powered Solar Intelligence for Algerian Smart Cities",
+    description: "Simulate your solar savings in 60 seconds. Zero-down financing available.",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <Header />
         {children}

@@ -23,10 +23,11 @@ export default function Header() {
 
     const closeMobile = () => setMobileOpen(false);
     const navItems = [
-        { href: "/#problemes", label: "Le Problème" },
-        { href: "/#solution", label: "Solution" },
-        { href: "/#piliers", label: "Piliers" },
-        { href: "/docs", label: "Read Docs" },
+        { href: "/simulation", label: "Simulation" },
+        { href: "/city-map", label: "City Map" },
+        { href: "/ai-optimization", label: "AI Optimizer" },
+        { href: "/smart-city", label: "Impact" },
+        { href: "/docs", label: "Docs" },
     ];
 
     return (
@@ -39,7 +40,7 @@ export default function Header() {
                     </ul>
                     <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
 
-                        <Link href="/simulation" className="nav-cta">Simuler gratuitement</Link>
+                        <Link href="/simulation" className="nav-cta">Start Simulation →</Link>
                         <button className="nav-menu-btn" onClick={() => setMobileOpen(true)} aria-label="Menu"><IconMenu /></button>
                     </div>
                 </div>
@@ -57,7 +58,7 @@ export default function Header() {
                             <li key={n.href}><Link href={n.href} className="mobile-nav-link" onClick={closeMobile}>{n.label}</Link></li>
                         ))}
                     </ul>
-                    <Link href="/simulation" className="mobile-drawer-cta" onClick={closeMobile}>Simuler gratuitement →</Link>
+                    <Link href="/simulation" className="mobile-drawer-cta" onClick={closeMobile}>Start Simulation →</Link>
                 </div>
             </div>
         </>

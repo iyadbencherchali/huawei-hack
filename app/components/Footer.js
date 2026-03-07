@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className="footer-grid">
                     <div>
                         <Link href="/" className="nav-logo" style={{ marginBottom: "0.5rem", display: "inline-flex" }}><span className="nav-logo-dot" /><span>Pulse.dz</span></Link>
-                        <p className="footer-brand-desc">Système d'Orchestration Énergétique Décentralisé. Rendant le solaire accessible, rentable et intelligent pour chaque Algérien.</p>
+                        <p className="footer-brand-desc">Decentralized Solar Energy Intelligence. Making solar accessible, profitable, and smart for every Algerian citizen.</p>
                         <div className="footer-social">
                             <a href="#" className="footer-social-link" aria-label="Facebook">f</a>
                             <a href="#" className="footer-social-link" aria-label="Instagram"><IconSun size={16} /></a>
@@ -16,37 +16,38 @@ export default function Footer() {
                         </div>
                     </div>
                     <div>
-                        <h4 className="footer-col-title">Produit</h4>
+                        <h4 className="footer-col-title">Product</h4>
                         <ul className="footer-col-links">
-                            <li><Link href="/#solution">Application</Link></li>
-                            <li><Link href="/#piliers">Pulse Bridge</Link></li>
-                            <li><Link href="/simulation">Simulateur Web</Link></li>
-                            <li><Link href="/pro">Espace Pro (Installateurs)</Link></li>
+                            <li><Link href="/simulation">Solar Simulator</Link></li>
+                            <li><Link href="/city-map">City Solar Map</Link></li>
+                            <li><Link href="/ai-optimization">AI Optimization</Link></li>
+                            <li><Link href="/smart-city">Smart City Impact</Link></li>
+                            <li><Link href="/pro">Pro Network (Installers)</Link></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 className="footer-col-title">Ressources</h4>
+                        <h4 className="footer-col-title">Resources</h4>
                         <ul className="footer-col-links">
-                            <li><Link href="/docs">Read Docs</Link></li>
-                            <li><Link href="/blog">Blog & Actualités</Link></li>
-                            <li><Link href="/blog#guide">Guide d'installation</Link></li>
+                            <li><Link href="/docs">Documentation</Link></li>
+                            <li><Link href="/blog">Blog & News</Link></li>
+                            <li><Link href="/simulation/methodology">Methodology</Link></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 className="footer-col-title">Entreprise</h4>
+                        <h4 className="footer-col-title">Company</h4>
                         <ul className="footer-col-links">
-                            <li><Link href="/a-propos">À Propos de Pulse.dz</Link></li>
-                            <li><Link href="/a-propos#partenaires">Partenaires</Link></li>
+                            <li><Link href="/a-propos">About Pulse.dz</Link></li>
+                            <li><Link href="/a-propos#partenaires">Partners</Link></li>
                             <li><Link href="mailto:contact@pulse.dz">Contact</Link></li>
                         </ul>
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <span className="footer-bottom-text">© 2026 Pulse.dz — Tous droits réservés.</span>
+                    <span className="footer-bottom-text">© 2026 Pulse.dz — All rights reserved.</span>
                     <div className="footer-bottom-links">
-                        <Link href="#">Mentions légales</Link>
-                        <Link href="#">Confidentialité</Link>
-                        <Link href="#">CGU</Link>
+                        <Link href="#">Legal Notice</Link>
+                        <Link href="#">Privacy Policy</Link>
+                        <Link href="#">Terms of Use</Link>
                     </div>
                 </div>
             </div>
