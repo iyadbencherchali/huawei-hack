@@ -23,15 +23,6 @@ export default function Docs() {
 
       <div className="docs-grid" style={{ display: "grid", gap: "var(--space-xl)" }}>
         
-        <div className="docs-item" id="city-map">
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
-            <span style={{ fontSize: "24px" }}>🌍</span>
-            <h3 className="t-subtitle" style={{ color: "var(--blue)", margin: 0 }}>Solar Algeria Map</h3>
-          </div>
-          <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "var(--text-secondary)" }}>
-            Our national solar map has expanded to cover all 58 wilayas, with over 130 high-resolution data points. We use satellite irradiance modeling (1,700–2,400 kWh/m²) to identify high-potential zones from Algiers to Tamanrasset. The interface is optimized for rapid exploration, removing clutter to prioritize pure solar data visualization.
-          </p>
-        </div>
 
         <div className="docs-item" id="simulation">
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
@@ -43,25 +34,7 @@ export default function Docs() {
           </p>
         </div>
 
-        <div className="docs-item" id="orchestration">
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
-            <span style={{ fontSize: "24px" }}>🤖</span>
-            <h3 className="t-subtitle" style={{ color: "var(--blue)", margin: 0 }}>AI Orchestration (Sirocco-Shield)</h3>
-          </div>
-          <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "var(--text-secondary)" }}>
-            Sirocco-Shield intelligently orchestrates your energy flow based on real-time solar yield and consumption patterns. By predicting sandstorms and identifying "Net-Zero Windows," the AI optimizes your energy usage to maximize savings and protect your hardware investment.
-          </p>
-        </div>
 
-        <div className="docs-item" id="impact">
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
-            <span style={{ fontSize: "24px" }}>📈</span>
-            <h3 className="t-subtitle" style={{ color: "var(--blue)", margin: 0 }}>Smart City Impact Metrics</h3>
-          </div>
-          <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "var(--text-secondary)" }}>
-            The Impact Dashboard aggregates real-time data from every Pulse Bridge across the city. We calculate CO₂ avoidance using the Algerian grid emission factor (0.487 kg/kWh). This transparency allows city planners to identify "Solar Deserts"—districts with high potential but low adoption—to prioritize local incentives.
-          </p>
-        </div>
 
         <div className="docs-item">
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>

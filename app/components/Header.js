@@ -24,9 +24,6 @@ export default function Header() {
     const closeMobile = () => setMobileOpen(false);
     const navItems = [
         { href: "/simulation", label: "Simulation" },
-        { href: "/city-map", label: "City Map" },
-        { href: "/ai-optimization", label: "AI Optimizer" },
-        { href: "/smart-city", label: "Impact" },
         { href: "/docs", label: "Docs" },
     ];
 

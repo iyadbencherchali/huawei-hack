@@ -19,9 +19,6 @@ export default function Footer() {
                         <h4 className="footer-col-title">Product</h4>
                         <ul className="footer-col-links">
                             <li><Link href="/simulation">Solar Simulator</Link></li>
-                            <li><Link href="/city-map">City Solar Map</Link></li>
-                            <li><Link href="/ai-optimization">AI Optimization</Link></li>
-                            <li><Link href="/smart-city">Smart City Impact</Link></li>
                             <li><Link href="/pro">Pro Network (Installers)</Link></li>
                         </ul>
                     </div>

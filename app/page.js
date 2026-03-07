@@ -675,75 +675,18 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="ecosystem-grid reveal">
+          <div className="reveal" style={{ maxWidth: "600px", margin: "0 auto" }}>
             {/* CARD 1: SOLAR SIMULATION */}
-            <div className="ecosystem-card">
-              <div className="t-label">
-                <div style={{ background: "rgba(30,58,95,0.1)", color: "var(--blue)", width: "28px", height: "28px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.8rem", fontWeight: 700 }}>1</div>
+            <div className="ecosystem-card" style={{ textAlign: "center", border: "1px solid var(--blue)", background: "rgba(30,58,95,0.02)" }}>
+              <div className="t-label" style={{ justifyContent: "center" }}>
                 Simulation
               </div>
-              <h3 className="t-display" style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>Solar Simulation</h3>
-              <p className="t-subheading" style={{ marginBottom: "2rem", flexGrow: 1 }}>
-                Estimate solar potential for homes instantly using accurate meteorological data and AI.
+              <h3 className="t-display" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Solar Simulator</h3>
+              <p className="t-subheading" style={{ marginBottom: "2rem" }}>
+                Accurately estimate your solar potential, installation costs, and ROI in seconds.
               </p>
-              <a href="/simulation" className="btn-primary" style={{ padding: "12px 20px", fontSize: "0.9rem", width: "fit-content" }}>
-                Run Simulation <IconArrowRight size={16} style={{ marginLeft: "8px" }} />
-              </a>
-            </div>
-
-            {/* CARD 2: SOLAR CITY MAP */}
-            <div className="ecosystem-card">
-              <div className="t-label">
-                <div style={{ background: "rgba(30,58,95,0.1)", color: "var(--blue)", width: "28px", height: "28px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.8rem", fontWeight: 700 }}>2</div>
-                City Mapping
-              </div>
-              <h3 className="t-display" style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>Solar City Map</h3>
-              <p className="t-subheading" style={{ marginBottom: "20px", flexGrow: 1 }}>
-                Visualize solar potential across the entire city with color-coded building analysis.
-              </p>
-              <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", borderLeft: "3px solid var(--orange)", paddingLeft: "12px", fontStyle: "italic", marginBottom: "2rem" }}>
-                "Demonstrates how solar infrastructure can scale simultaneously across the city."
-              </p>
-              <a href="/city-map" className="btn-secondary" style={{ padding: "12px 20px", fontSize: "0.9rem", width: "fit-content", borderColor: "var(--blue)", color: "var(--blue)" }}>
-                <IconGlobe size={16} style={{ marginRight: "8px" }} /> Explore Map
-              </a>
-            </div>
-
-            {/* CARD 3: AI OPTIMIZATION */}
-            <div className="ecosystem-card">
-              <div className="t-label">
-                <div style={{ background: "rgba(30,58,95,0.1)", color: "var(--blue)", width: "28px", height: "28px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.8rem", fontWeight: 700 }}>3</div>
-                AI Optimizer
-              </div>
-              <h3 className="t-display" style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>AI Optimization</h3>
-              <p className="t-subheading" style={{ marginBottom: "2rem", flexGrow: 1 }}>
-                Optimize household energy consumption based on real-time solar production patterns.
-              </p>
-              <a href="/ai-optimization" className="btn-primary" style={{ padding: "12px 20px", fontSize: "0.9rem", width: "fit-content" }}>
-                <IconBolt size={16} style={{ marginRight: "8px" }} /> Open AI Optimizer
-              </a>
-            </div>
-
-            {/* CARD 4: SMART CITY IMPACT */}
-            <div className="ecosystem-card">
-              <div className="t-label">
-                <div style={{ background: "rgba(30,58,95,0.1)", color: "var(--blue)", width: "28px", height: "28px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.8rem", fontWeight: 700 }}>4</div>
-                Global Impact
-              </div>
-              <h3 className="t-display" style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>Smart City Impact</h3>
-              <p className="t-subheading" style={{ marginBottom: "1.5rem" }}>
-                Showcase the large-scale impact of solar adoption on urban infrastructure.
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "2rem", flexGrow: 1 }}>
-                <div style={{ display: "flex", gap: "10px", alignItems: "center", fontSize: "0.85rem", color: "var(--text-secondary)" }}>
-                  <IconGlobe size={16} color="var(--blue)" /> Public Transparency
-                </div>
-                <div style={{ display: "flex", gap: "10px", alignItems: "center", fontSize: "0.85rem", color: "var(--text-secondary)" }}>
-                  <IconDocument size={16} color="var(--blue)" /> Data-Driven Policy
-                </div>
-              </div>
-              <a href="/smart-city" className="btn-secondary" style={{ padding: "12px 20px", fontSize: "0.9rem", width: "fit-content", borderColor: "var(--blue)", color: "var(--blue)" }}>
-                <IconTarget size={16} style={{ marginRight: "8px" }} /> View Impact
+              <a href="/simulation" className="btn-primary" style={{ padding: "16px 32px", fontSize: "1rem", margin: "0 auto" }}>
+                Start My Simulation <IconArrowRight size={18} style={{ marginLeft: "10px" }} />
               </a>
             </div>
           </div>
