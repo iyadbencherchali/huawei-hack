@@ -31,17 +31,17 @@
   --font-body: 'Inter', -apple-system, sans-serif;
 
   /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
-  --space-2xl: 6rem;
-  --space-3xl: 10rem;
+  --space-xs: 0.4rem;
+  --space-sm: 0.8rem;
+  --space-md: 1.2rem;
+  --space-lg: 1.8rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 6rem;
 
   /* Layout */
-  --max-width: 1280px;
-  --nav-height: 72px;
+  --max-width: 1100px;
+  --nav-height: 60px;
 
   /* Radius */
   --radius-sm: 8px;
@@ -75,6 +75,7 @@
 }
 
 html {
+  font-size: 82%;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1111,7 +1112,7 @@ img {
 
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
 }
 
@@ -1131,13 +1132,7 @@ img {
   box-shadow: 0 30px 60px rgba(30, 58, 95, 0.1), 0 0 0 1px rgba(30, 58, 95, 0.08);
 }
 
-.pillar-card:nth-child(2) {
-  margin-top: var(--space-xl);
-}
-
-.pillar-card:nth-child(3) {
-  margin-top: calc(var(--space-xl) * -1);
-}
+/* Removed staggered margins to align cards side-by-side */
 
 .pillar-number {
   font-family: var(--font-display);
@@ -2279,14 +2274,12 @@ img {
   padding: var(--space-xl) 0;
   background: var(--white);
   border-bottom: 1px solid rgba(30, 58, 95, 0.04);
+  overflow: hidden;
 }
 
 .partners-inner {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: var(--space-3xl);
-  flex-wrap: wrap;
   opacity: 0.5;
   filter: grayscale(100%);
   transition: all var(--duration-normal) ease;
@@ -2295,6 +2288,28 @@ img {
 .partners-inner:hover {
   opacity: 1;
   filter: grayscale(0%);
+}
+
+.partners-track {
+  display: flex;
+  gap: var(--space-3xl);
+  align-items: center;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.partners-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
 }
 
 .partner-logo {
@@ -2306,6 +2321,7 @@ img {
   align-items: center;
   gap: 0.5rem;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 /* --- Simplified Process (3 Steps) --- */
@@ -2511,6 +2527,10 @@ img {
   .app-preview-phone {
     width: 180px;
     height: 360px;
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

@@ -3,15 +3,14 @@ import { useState, useEffect } from "react";
 import {
   IconArrowRight, IconShield, IconWind, IconMeter, IconWallet, IconClock,
   IconSatellite, IconBolt, IconDocument, IconBrain, IconCreditCard,
-  IconBell, IconLightbulb, IconTrendDown, IconSun, IconChevronDown
+  IconBell, IconLightbulb, IconTrendDown, IconSun, IconChevronDown,
+  IconApple, IconPlayStore
 } from "./components/Icons";
 
 export default function Home() {
   const [simResult, setSimResult] = useState(null);
   const [facture, setFacture] = useState("");
   const [wilaya, setWilaya] = useState("");
-
-
 
   const [activeFaq, setActiveFaq] = useState(null);
 
@@ -48,20 +47,20 @@ export default function Home() {
             </div>
             <h1 className="t-display hero-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", letterSpacing: "-0.04em", lineHeight: "1.05", fontWeight: "500" }}>Votre toit peut <em>produire</em> votre énergie.</h1>
             <p className="t-subheading hero-subtitle">
-              Pulse.dz calcule votre potentiel solaire en 60 secondes, organise votre financement, et optimise votre production au quotidien grâce à l'IA.
+              Pulse.dz est un Système d'Orchestration Énergétique Décentralisé. Calculez votre potentiel solaire en 60 secondes, financez votre installation, et optimisez votre production grâce à l'IA.
             </p>
             <div className="hero-actions">
               <a href="/simulateur" className="btn-primary">
                 Faites le test (60s) <IconArrowRight size={18} style={{ marginLeft: "8px" }} />
               </a>
-              <a href="/comment-ca-marche" className="btn-secondary">
-                Comment ça marche
+              <a href="/simulateur" className="btn-secondary">
+                Simulation instantanée
               </a>
             </div>
             <div className="hero-stats">
               <div><div className="hero-stat-value">12<span>,</span>400<span>+</span></div><div className="hero-stat-label">Simulations effectuées</div></div>
-              <div><div className="hero-stat-value">48 <span>wilayas</span></div><div className="hero-stat-label">Couvertes en Algérie</div></div>
-              <div><div className="hero-stat-value">2.8<span>M DA</span></div><div className="hero-stat-label">Économies générées</div></div>
+              <div><div className="hero-stat-value">58 <span>wilayas</span></div><div className="hero-stat-label">Couvertes en Algérie</div></div>
+              <div><div className="hero-stat-value">8.4<span>K DA</span></div><div className="hero-stat-label">Économies moyennes / mois</div></div>
             </div>
           </div>
           <div className="hero-visual">
@@ -87,12 +86,29 @@ export default function Home() {
 
       {/* ===== PARTNERS ===== */}
       <section className="partners">
-        <div className="container partners-inner reveal">
-          <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> Sonelgaz</div>
-          <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> BNA</div>
-          <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> Huawei Solaire</div>
-          <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> ANIREF</div>
-          <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> APRUE</div>
+        <div className="partners-inner reveal">
+          <div className="partners-track">
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> Sonelgaz</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> BNA</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> BEA</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> Badr</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> ANIREF</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> APRUE</div>
+            {/* Duplicate for infinite loop */}
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> Sonelgaz</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> BNA</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> BEA</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> Badr</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> ANIREF</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> APRUE</div>
+            {/* Triplicate for large screens */}
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> Sonelgaz</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> BNA</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> BEA</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> Badr</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> ANIREF</div>
+            <div className="partner-logo"><span style={{ color: "var(--orange)" }}>●</span> APRUE</div>
+          </div>
         </div>
       </section>
 
@@ -109,10 +125,10 @@ export default function Home() {
           </div>
           <div className="problems-grid">
             {[
-              { Icon: IconWind, cls: "sand", title: "Le Sirocco détruit vos rendements", desc: "Les tempêtes de sable réduisent l'efficacité de vos panneaux jusqu'à 40%. Sans alerte, vous perdez de l'argent sans le savoir.", sol: "Sirocco-Shield IA prédit et alerte" },
-              { Icon: IconMeter, cls: "meter", title: "Compteurs aveugles de Sonelgaz", desc: "Les compteurs actuels ne mesurent pas la production solaire. Votre surplus est invisible et perdu.", sol: "Pulse Bridge lit tout sans modification" },
-              { Icon: IconWallet, cls: "money", title: "Coût d'entrée prohibitif", desc: "L'investissement initial est trop élevé pour la majorité des foyers algériens — aucune banque ne propose un produit adapté.", sol: "Financement Mourabaha 0 apport" },
-              { Icon: IconClock, cls: "clock", title: "Décalage production / consommation", desc: "Vous produisez à midi quand personne n'est là. Vous consommez le soir quand le soleil disparaît.", sol: "L'IA optimise vos usages en temps réel" },
+              { Icon: IconWind, cls: "sand", title: "Le Sirocco détruit vos rendements", desc: "Le vent de sable réduit l'efficacité jusqu'à 40%. Le problème : l'invisibilité de la perte. Sans alerte ni mesure, vous perdez des centaines de dinars par jour sans le savoir.", sol: "Sirocco-Shield IA prédit et alerte" },
+              { Icon: IconMeter, cls: "meter", title: "Compteurs aveugles de Sonelgaz", desc: "Les compteurs électromécaniques sont incapables de distinguer la direction du flux. Votre surplus solaire injecté dans le réseau est invisible et perdu.", sol: "Pulse Bridge lit tout sans modification" },
+              { Icon: IconWallet, cls: "money", title: "Barrière financière", desc: "Plusieurs centaines de milliers de dinars en une seule fois est impossible pour la majorité des foyers. Aucun produit bancaire spécifique n'existait pour le solaire résidentiel.", sol: "Financement bancaire via BNA/BEA/Badr" },
+              { Icon: IconClock, cls: "clock", title: "Décalage production / consommation", desc: "Vous produisez au maximum entre 10h et 14h — quand la famille est absente. La consommation maximale est entre 18h et 22h, quand le soleil est couché.", sol: "Smart Charging Optimizer par l'IA" },
             ].map((p, i) => (
               <div className={`problem-card reveal reveal-delay-${i + 1}`} key={i}>
                 <div className={`problem-icon ${p.cls}`}><p.Icon size={24} color={p.cls === "sand" ? "#d97706" : p.cls === "meter" ? "#2563eb" : p.cls === "money" ? "#16a34a" : "#db2777"} /></div>
@@ -134,9 +150,9 @@ export default function Home() {
             <p className="t-subheading">Production en temps réel, alertes intelligentes, financement intégré et optimisation IA — tout dans une seule application.</p>
             <div className="showcase-features">
               {[
-                { Icon: IconSatellite, t: "Monitoring en temps réel", d: "Production, consommation et batteries — visibles à chaque instant via le Pulse Bridge." },
-                { Icon: IconBrain, t: "IA prédictive Sirocco-Shield", d: "Anticipe les tempêtes de sable 48h à l'avance et protège votre investissement." },
-                { Icon: IconCreditCard, t: "Financement automatisé", d: "Dossier Mourabaha généré en 5 minutes, prêt pour dépôt en agence." },
+                { Icon: IconSatellite, t: "Monitoring en temps réel", d: "Production, consommation et batteries — visibles à chaque instant via le Pulse Bridge IoT, transmis par LoRaWAN sans Wi-Fi ni 4G." },
+                { Icon: IconBrain, t: "IA prédictive Sirocco-Shield", d: "Gradient Boosting Regressor entraîné sur 9 ans de données NASA. Anticipe les tempêtes, calcule la perte en DA, et alerte proactivement." },
+                { Icon: IconCreditCard, t: "Pulse Finance", d: "Dossier de financement généré automatiquement, intégrant les réductions LF2026. Prêt à déposer auprès de BNA, BEA ou Badr." },
               ].map((f, i) => (
                 <div className="showcase-feature" key={i}>
                   <div className="showcase-feature-icon"><f.Icon size={20} color="#ff8811" /></div>
@@ -149,18 +165,18 @@ export default function Home() {
             <div className="showcase-phone">
               <div className="showcase-phone-screen">
                 <div className="phone-header">
-                  <div><div className="phone-greeting">Pulse Board</div><div className="phone-title" style={{ fontSize: "0.85rem" }}>Production Mensuelle</div></div>
+                  <div><div className="phone-greeting">Pulse Board</div><div className="phone-title" style={{ fontSize: "0.85rem" }}>Performances en direct</div></div>
                 </div>
-                <div style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.6rem", marginBottom: "4px" }}>kWh produits</div>
+                <div style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.6rem", marginBottom: "4px" }}>Production (kW)</div>
                 <div className="showcase-graph-area">
-                  <div className="showcase-graph-bars">{[1, 2, 3, 4, 5, 6, 7].map((b) => <div className="graph-bar" key={b} />)}</div>
+                  <div className="showcase-graph-bars">{[1.2, 2.4, 3.8, 4.2].map((v, i) => <div className="graph-bar" key={i} style={{ height: `${v * 15}%` }} />)}</div>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", marginTop: "8px" }}>
-                  {["Jan", "Fév", "Mar", "Avr", "Mai", "Jun", "Jul"].map((m) => <span key={m} style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.25)" }}>{m}</span>)}
+                  {["09:00", "11:00", "13:00", "15:00"].map((t) => <span key={t} style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.25)" }}>{t}</span>)}
                 </div>
                 <div className="phone-mini-cards" style={{ marginTop: "10px" }}>
-                  <div className="phone-mini-card"><div className="phone-mini-label">Ce mois</div><div className="phone-mini-value green">312 kWh</div></div>
-                  <div className="phone-mini-card"><div className="phone-mini-label">Économies</div><div className="phone-mini-value amber">8,400 DA</div></div>
+                  <div className="phone-mini-card"><div className="phone-mini-label">Production</div><div className="phone-mini-value orange">4.2 kW</div></div>
+                  <div className="phone-mini-card"><div className="phone-mini-label">Cellule</div><div className="phone-mini-value blue">+1,240 PC</div></div>
                 </div>
               </div>
             </div>
@@ -178,18 +194,19 @@ export default function Home() {
           </div>
           <div className="pillars-grid">
             {[
-              { n: "01", Icon: IconShield, cls: "orange", t: "Sirocco-Shield", d: "IA de prédiction des tempêtes de sable. Croise images satellites Copernicus, météo locale et données de luminosité du réseau Pulse pour alerter 48h à l'avance.", link: "/#solution" },
-              { n: "02", Icon: IconSatellite, cls: "blue", t: "Pulse Bridge IoT", d: "Capteur non-invasif qui se fixe sur votre compteur Sonelgaz. Transmission LoRaWAN — fonctionne sans Wi-Fi ni 4G, portée de 5 à 40 km.", link: "/#solution" },
-              { n: "03", Icon: IconDocument, cls: "green", t: "Green Sukuk", d: "Générateur automatique de dossiers Mourabaha. Scan OCR de la facture, simulation financière, export PDF prêt pour dépôt bancaire en 5 minutes.", link: "/comment-ca-marche" },
-              { n: "04", Icon: IconBolt, cls: "gold", t: "Réseau Pulse Pro", d: "Notre communauté d'installateurs premium et agents de nettoyage certifiés. On s'occupe de tout, du financement à l'installation.", link: "/pro" },
-            ].map((p, i) => (
-              <a href={p.link} className={`pillar-card reveal reveal-delay-${i + 1}`} key={i} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-                <span className="pillar-number">{p.n}</span>
-                <div className={`pillar-icon ${p.cls}`}><p.Icon size={26} color={p.cls === "orange" ? "#ff8811" : p.cls === "blue" ? "#1E3A5F" : p.cls === "green" ? "#16a34a" : "#d97706"} /></div>
-                <h3 className="pillar-title">{p.t}</h3>
-                <p className="pillar-desc">{p.d}</p>
-              </a>
-            ))}
+              { n: "01", Icon: IconShield, cls: "orange", t: "IA Active : Sirocco-Shield", d: "Là où les autres font de simples graphiques, Pulse.dz protège activement le matériel. L'IA anticipe les tempêtes, alerte, et agit.", link: "/#solution" },
+              { n: "02", Icon: IconBolt, cls: "gold", t: "L'Énergie Sociale : Pulse Credits", d: "Le surplus énergétique est transformé en monnaie d'échange communautaire, créant un lien économique réel entre voisins d'un quartier.", link: "/pro" },
+              { n: "03", Icon: IconSatellite, cls: "blue", t: "Local First : 58 Wilayas", d: "Algorithmes calibrés sur 9 ans de données NASA réelles. Conçu spécifiquement pour l'Algérie (climat, financement local), pas adapté d'ailleurs.", link: "/simulateur" },
+              { n: "04", Icon: IconDocument, cls: "green", t: "Zéro Friction : All-in-One", d: "Un seul outil pour tout le parcours : Simuler, Financer, Installer, Monitorer, Partager. L'utilisateur ne quitte jamais l'écosystème.", link: "/simulateur" },
+            ]
+              .map((p, i) => (
+                <a href={p.link} className={`pillar-card reveal reveal-delay-${i + 1}`} key={i} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+                  <span className="pillar-number">{p.n}</span>
+                  <div className={`pillar-icon ${p.cls}`}><p.Icon size={26} color={p.cls === "orange" ? "#ff8811" : p.cls === "blue" ? "#1E3A5F" : p.cls === "green" ? "#16a34a" : "#d97706"} /></div>
+                  <h3 className="pillar-title">{p.t}</h3>
+                  <p className="pillar-desc">{p.d}</p>
+                </a>
+              ))}
           </div>
         </div>
       </section>
@@ -215,7 +232,86 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: "center", marginTop: "var(--space-xl)" }} className="reveal">
-            <a href="/comment-ca-marche" style={{ color: "var(--blue)", fontWeight: "600", textDecoration: "underline" }}>Voir le processus détaillé →</a>
+            <a href="/simulateur" style={{ color: "var(--blue)", fontWeight: "600", textDecoration: "underline" }}>Lancer la simulation →</a>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ECOSYSTEM (MODULE E) ===== */}
+      <section className="ecosystem" style={{ padding: "8rem 0", backgroundColor: "#f8fafc" }}>
+        <div className="container">
+          <div className="ecosystem-header reveal" style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <span className="t-label">Les 5 Acteurs Modulaires</span>
+            <h2 className="t-display">L'Écosystème Pulse en action.</h2>
+            <p className="t-subheading" style={{ margin: "1rem auto 0", maxWidth: "700px", color: "var(--text-secondary)" }}>
+              Pulse.dz ne connecte pas seulement des panneaux au réseau. Il connecte des objectifs économiques individuels pour créer une infrastructure nationale résiliente.
+            </p>
+          </div>
+          <div className="ecosystem-grid reveal" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+            {[
+              { Icon: IconSun, title: "Propriétaire (B2C)", desc: "Particulier ou PME avec un toit. Objectif : Réduire sa facture, sécuriser son approvisionnement et rentabiliser son toit via les Pulse Credits." },
+              { Icon: IconShield, title: "Installateur (B2B)", desc: "Professionnel certifié. Objectif : Recevoir des chantiers pré-validés, sourcer du matériel de qualité, et développer son chiffre d'affaires." },
+              { Icon: IconWind, title: "Agent de Nettoyage", desc: "Partenaire de proximité. Objectif : Gagner un revenu complémentaire grâce aux missions de nettoyage déclenchées par l'IA après les tempêtes." },
+              { Icon: IconWallet, title: "Banque Partenaire", desc: "BNA, BEA, Badr. Objectif : Traiter et financer des dossiers solaires pré-formatés, rentables et conformes aux dispositifs de la LF 2026." },
+              { Icon: IconSatellite, title: "Sonelgaz", desc: "Gestionnaire du réseau national. Objectif : Accéder aux données macroscopiques pour équilibrer la grille et lisser les pics de demande estivale." },
+            ].map((actor, i) => (
+              <div className="ecosystem-card" key={i} style={{ backgroundColor: "#fff", padding: "32px 24px", borderRadius: "24px", boxShadow: "0 10px 40px -10px rgba(0,0,0,0.05)", border: "1px solid rgba(0,0,0,0.02)" }}>
+                <div style={{ width: "48px", height: "48px", borderRadius: "12px", backgroundColor: "rgba(30, 58, 95, 0.05)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                  <actor.Icon size={24} color="var(--blue)" />
+                </div>
+                <h3 style={{ fontSize: "1.2rem", fontFamily: "var(--font-display)", marginBottom: "12px", color: "var(--text)" }}>{actor.title}</h3>
+                <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>{actor.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PULSE CREDITS & EV CHARGING (MODULE E) ===== */}
+      <section className="pulse-credits" style={{ padding: "8rem 0" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "4rem", alignItems: "center" }}>
+            <div className="reveal">
+              <span className="t-label">Pulse Credits & Partage Légal</span>
+              <h2 className="t-display" style={{ margin: "1rem 0" }}>Monétisez votre surplus, sans enfreindre la loi.</h2>
+              <p className="t-subheading" style={{ color: "var(--text-secondary)", marginBottom: "1.5rem" }}>
+                Revendre de l'électricité à ses voisins via une batterie de rue est interdit (Loi 02-01 limitant la distribution à Sonelgaz). Pulse résout ce blocage par une approche 100% légale.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                <div style={{ padding: "24px", backgroundColor: "#fef2f2", borderRadius: "16px", borderLeft: "4px solid #ef4444" }}>
+                  <h4 style={{ fontSize: "1.1rem", fontFamily: "var(--font-bold)", color: "#991b1b", marginBottom: "8px" }}>L'Illusion : La Batterie de Rue</h4>
+                  <p style={{ fontSize: "0.95rem", color: "#b91c1c", lineHeight: 1.5 }}>Stocker et revendre de l'énergie entre foyers fait de vous un mini-distributeur. C'est juridiquement risqué sans concession d'État.</p>
+                </div>
+                <div style={{ padding: "24px", backgroundColor: "#f0fdf4", borderRadius: "16px", borderLeft: "4px solid var(--green)" }}>
+                  <h4 style={{ fontSize: "1.1rem", fontFamily: "var(--font-bold)", color: "#166534", marginBottom: "8px" }}>La Solution Pulse : Bornes de Recharge (EV)</h4>
+                  <p style={{ fontSize: "0.95rem", color: "#15803d", lineHeight: 1.5 }}>Le surplus alimente des bornes de recharge pour véhicules électriques dans la rue. Ce n'est plus de la distribution, mais de l'autoconsommation matérielle étendue. Vous gagnez des <strong>Pulse Credits</strong> pour chaque kWh rechargé, utilisables dans notre marketplace.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="reveal reveal-delay-2" style={{ position: "relative" }}>
+              <div style={{ background: "linear-gradient(135deg, var(--blue), #112a4d)", height: "500px", borderRadius: "32px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px" }}>
+                <div style={{ width: "100px", height: "100px", borderRadius: "50%", backgroundColor: "rgba(255, 136, 17, 0.1)", border: "2px solid var(--orange)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "30px", zIndex: 2 }}>
+                  <IconBolt size={40} color="var(--orange)" />
+                </div>
+
+                {/* Visual connecting lines */}
+                <svg width="100%" height="150" style={{ position: "absolute", top: "50%", transform: "translateY(-50%)", zIndex: 1, opacity: 0.3 }}>
+                  <path d="M 50 75 Q 150 0 250 75 T 450 75" fill="none" stroke="var(--orange)" strokeWidth="2" strokeDasharray="6 6" className="animated-path" />
+                </svg>
+
+                <div style={{ display: "flex", gap: "20px", zIndex: 2, width: "100%", justifyContent: "space-between" }}>
+                  <div style={{ backgroundColor: "rgba(255,255,255,0.1)", padding: "20px", borderRadius: "20px", flex: 1, textAlign: "center", backdropFilter: "blur(10px)" }}>
+                    <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.7)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Surplus Toit</div>
+                    <div style={{ fontSize: "1.5rem", fontFamily: "var(--font-bold)", color: "#fff" }}>+ 4.2 kW</div>
+                  </div>
+                  <div style={{ backgroundColor: "rgba(255,255,255,0.1)", padding: "20px", borderRadius: "20px", flex: 1, textAlign: "center", backdropFilter: "blur(10px)" }}>
+                    <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.7)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>Achat Recharges</div>
+                    <div style={{ fontSize: "1.5rem", fontFamily: "var(--font-bold)", color: "var(--green)" }}>+ 1,240 Pc</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -230,114 +326,31 @@ export default function Home() {
             <h2 className="t-display">3 écrans qui changent votre rapport à l'énergie.</h2>
           </div>
           <div className="app-preview-track reveal">
-            {/* Phone 1 — Simulator */}
+            {/* Phone 1 — Economies */}
             <div>
               <div className="app-preview-phone">
-                <div className="app-preview-screen preview-screen-light">
-                  <div style={{ fontSize: "0.55rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginTop: "8px" }}>Simulateur Solaire</div>
-                  <div style={{ fontFamily: "var(--font-display)", fontSize: "1rem", fontWeight: 600, color: "var(--blue)", marginBottom: "8px" }}>Votre potentiel</div>
-                  <div style={{ background: "var(--white)", borderRadius: "14px", padding: "12px", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-                    <div style={{ fontSize: "0.5rem", color: "var(--text-muted)", marginBottom: "4px" }}>Économies annuelles</div>
-                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", fontWeight: 700, color: "var(--orange)" }}>86,400 DA</div>
-                    <div style={{ fontSize: "0.5rem", color: "var(--text-muted)" }}>soit 7,200 DA / mois</div>
-                  </div>
-                  <div style={{ display: "flex", gap: "6px", marginTop: "8px" }}>
-                    <div style={{ flex: 1, background: "var(--orange-glow)", borderRadius: "10px", padding: "8px", textAlign: "center" }}><div style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--orange)" }}>3.5</div><div style={{ fontSize: "0.45rem", color: "var(--text-muted)" }}>kWc</div></div>
-                    <div style={{ flex: 1, background: "rgba(30,58,95,0.04)", borderRadius: "10px", padding: "8px", textAlign: "center" }}><div style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--blue)" }}>22m²</div><div style={{ fontSize: "0.45rem", color: "var(--text-muted)" }}>surface</div></div>
-                    <div style={{ flex: 1, background: "rgba(74,222,128,0.08)", borderRadius: "10px", padding: "8px", textAlign: "center" }}><div style={{ fontSize: "0.8rem", fontWeight: 700, color: "#16a34a" }}>3.2a</div><div style={{ fontSize: "0.45rem", color: "var(--text-muted)" }}>ROI</div></div>
-                  </div>
-                </div>
+                <img src="/screen1.png" alt="Économies et Pulse Credits" style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='440' style='background:%23eee'><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='12' fill='%23999'>screen1.png</text></svg>" }} />
               </div>
-              <div className="app-preview-phone-label">Simulateur</div>
+              <div className="app-preview-phone-label">Factures réduites & Pulse Credits</div>
             </div>
-            {/* Phone 2 — Dashboard (center, featured) */}
+            {/* Phone 2 — Map */}
             <div>
               <div className="app-preview-phone">
-                <div className="app-preview-screen preview-screen-dark">
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "4px" }}>
-                    <div style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.4)" }}>Bonjour, Amine</div>
-                    <IconBell size={12} color="rgba(255,255,255,0.4)" />
-                  </div>
-                  <div style={{ fontFamily: "var(--font-display)", fontSize: "0.9rem", color: "white", fontWeight: 600 }}>Votre Énergie</div>
-                  <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: "16px", padding: "14px", border: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
-                    <div style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "4px" }}>Production</div>
-                    <div style={{ fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 700, color: "#ff8811", lineHeight: 1 }}>3.2<span style={{ fontSize: "0.9rem", fontWeight: 400 }}> kW</span></div>
-                    <div style={{ height: "3px", background: "rgba(255,255,255,0.06)", borderRadius: "2px", marginTop: "10px" }}><div style={{ height: "100%", width: "78%", background: "linear-gradient(90deg, #ff8811, #ffa94d)", borderRadius: "2px" }} /></div>
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
-                    <div style={{ background: "rgba(255,255,255,0.05)", borderRadius: "12px", padding: "10px" }}><div style={{ fontSize: "0.45rem", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" }}>Batterie</div><div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#4ade80" }}>87%</div></div>
-                    <div style={{ background: "rgba(255,255,255,0.05)", borderRadius: "12px", padding: "10px" }}><div style={{ fontSize: "0.45rem", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" }}>Crédits</div><div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#ffa94d" }}>+124</div></div>
-                  </div>
-                  <div style={{ background: "rgba(255,136,17,0.1)", borderRadius: "12px", padding: "10px", border: "1px solid rgba(255,136,17,0.1)", display: "flex", gap: "6px", alignItems: "flex-start" }}>
-                    <IconLightbulb size={12} color="#ff8811" />
-                    <div style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>Lancez vos appareils maintenant pour maximiser l'autoconsommation.</div>
-                  </div>
-                </div>
+                <img src="/screen2.png" alt="Carte de précision" style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='440' style='background:%23333'><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='12' fill='%23999'>screen2.png</text></svg>" }} />
               </div>
-              <div className="app-preview-phone-label">Dashboard</div>
+              <div className="app-preview-phone-label">Localisation ultra-précise</div>
             </div>
-            {/* Phone 3 — Marketplace */}
+            {/* Phone 3 — Dashboard */}
             <div>
               <div className="app-preview-phone">
-                <div className="app-preview-screen preview-screen-sand">
-                  <div style={{ fontSize: "0.55rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginTop: "8px" }}>Marketplace</div>
-                  <div style={{ fontFamily: "var(--font-display)", fontSize: "0.9rem", fontWeight: 600, color: "var(--blue)", marginBottom: "6px" }}>Services</div>
-                  <div style={{ background: "rgba(255,136,17,0.08)", borderRadius: "12px", padding: "10px", border: "1px solid rgba(255,136,17,0.1)", marginBottom: "6px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><IconWind size={14} color="#ff8811" /><div style={{ fontSize: "0.6rem", fontWeight: 600, color: "var(--orange)" }}>Alerte nettoyage</div></div>
-                    <div style={{ fontSize: "0.5rem", color: "var(--text-secondary)", marginTop: "4px" }}>Perte de 28% — 420 DA/jour</div>
-                  </div>
-                  {["Karim D. — ★ 4.9 — 2 km", "Ali S. — ★ 4.7 — 3.1 km"].map((a, i) => (
-                    <div key={i} style={{ background: "var(--white)", borderRadius: "10px", padding: "8px", marginBottom: "6px", boxShadow: "0 1px 4px rgba(0,0,0,0.03)", display: "flex", alignItems: "center", gap: "8px" }}>
-                      <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: i === 0 ? "linear-gradient(135deg,#1E3A5F,#2a5080)" : "linear-gradient(135deg,#16a34a,#4ade80)", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: "0.6rem", fontWeight: 700 }}>{a[0]}</div>
-                      <div><div style={{ fontSize: "0.55rem", fontWeight: 600, color: "var(--blue)" }}>{a.split(" — ")[0]}</div><div style={{ fontSize: "0.45rem", color: "var(--text-muted)" }}>{a.split(" — ").slice(1).join(" · ")}</div></div>
-                    </div>
-                  ))}
-                </div>
+                <img src="/screen3.png" alt="Dashboard Actif" style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={(e) => { e.target.onerror = null; e.target.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='440' style='background:%23dfd8c8'><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='12' fill='%23666'>screen3.png</text></svg>" }} />
               </div>
-              <div className="app-preview-phone-label">Marketplace</div>
+              <div className="app-preview-phone-label">Dashboard Complet</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== TESTIMONIALS ===== */}
-      <section className="testimonials" id="temoignages">
-        <div className="container">
-          <div className="testimonials-header reveal">
-            <span className="t-label">Ils ont fait le pas</span>
-            <h2 className="t-display">Des Algériens parlent de leurs économies.</h2>
-          </div>
-          <div className="testimonials-layout">
-            <div className="testimonial-featured reveal">
-              <span className="testimonial-quote-mark">"</span>
-              <p className="testimonial-text">En 3 mois, ma facture Sonelgaz est passée de 8 000 DA à 4 200 DA. Le jour de la tempête de sable, j'ai reçu l'alerte 18 heures avant. Pulse.dz m'a convaincu que le solaire, c'est sérieux.</p>
-              <div className="testimonial-author">
-                <div className="testimonial-avatar">A</div>
-                <div>
-                  <div className="testimonial-author-name">Amine B.</div>
-                  <div className="testimonial-author-location">Blida — Villa individuelle</div>
-                  <div className="testimonial-saving"><IconTrendDown size={14} color="#16a34a" /> 3 800 DA/mois économisés</div>
-                </div>
-              </div>
-            </div>
-            <div className="testimonials-side">
-              {[
-                { text: "Le dossier Mourabaha était prêt en 10 minutes. La BNA l'a accepté en une semaine. Je n'ai rien avancé.", name: "Sara M.", loc: "Oran", initial: "S", bg: "linear-gradient(135deg, var(--orange), var(--orange-light))" },
-                { text: "En tant qu'installateur, Pulse.dz m'envoie des clients qualifiés. Ils ont déjà simulé et financé — je n'ai plus qu'à poser.", name: "Karim D.", loc: "Installateur — Alger", initial: "K", bg: "linear-gradient(135deg, #1E3A5F, #2a5080)" },
-                { text: "Je suis agent de nettoyage Pulse. 3 à 5 interventions par semaine, payé rapidement. C'est un vrai métier.", name: "Youcef T.", loc: "Agent — Ghardaïa", initial: "Y", bg: "linear-gradient(135deg, #16a34a, #4ade80)" },
-              ].map((t, i) => (
-                <div className={`testimonial-small reveal reveal-delay-${i + 1}`} key={i}>
-                  <p className="testimonial-small-text">"{t.text}"</p>
-                  <div className="testimonial-author">
-                    <div className="testimonial-avatar" style={{ width: 36, height: 36, fontSize: "0.8rem", background: t.bg }}>{t.initial}</div>
-                    <div><div className="testimonial-author-name" style={{ fontSize: "0.85rem" }}>{t.name}</div><div className="testimonial-author-location">{t.loc}</div></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ===== FAQ ===== */}
       <section className="faq">
@@ -348,10 +361,10 @@ export default function Home() {
           </div>
           <div className="faq-grid reveal">
             {[
-              { q: "Est-ce légal de poser des panneaux en Algérie ?", a: "Oui, c'est totalement légal. Pulse.dz assure la conformité de votre installation avec les normes de Sonelgaz pour une injection sécurisée ou une autoconsommation totale." },
-              { q: "Comment fonctionne le financement Mourabaha ?", a: "Nous préparons votre dossier Green Sukuk. Une banque partenaire (comme la BNA) finance l'équipement à 0 DA d'apport, et vous remboursez via vos économies d'énergie." },
-              { q: "Que se passe-t-il pendant les tempêtes de sable ?", a: "Notre technologie Sirocco-Shield vous alerte 48h avant. L'application vous propose alors un nettoyage certifié pour éviter une perte de rendement de 40%." },
-              { q: "Quelle est la durée de vie des panneaux ?", a: "Les panneaux sélectionnés par Pulse sont garantis 25 ans. Le Pulse Bridge et les onduleurs intelligents assurent une surveillance constante pour prévenir toute panne." },
+              { q: "Est-ce légal de poser des panneaux en Algérie ?", a: "Oui, c'est totalement légal. Pulse.dz contourne les contraintes avec des mécanismes légaux existants et assure la conformité de votre installation pour une autoconsommation optimale." },
+              { q: "Comment fonctionne le financement ?", a: "Pulse.dz génère automatiquement votre dossier de financement complet, intégrant les réductions de la LF 2026. Le dossier est prêt à déposer auprès de nos banques partenaires (BNA, BEA, Badr). L'installation se rembourse d'elle-même : la mensualité est inférieure aux économies mensuelles générées." },
+              { q: "Que se passe-t-il pendant les tempêtes de sable ?", a: "Sirocco-Shield vous alerte 24h à 48h avant l'impact avec la perte estimée en DA. Après la tempête, le ML model mesure le gap de performance exact et vous propose un nettoyage si la perte dépasse 150 DA/jour." },
+              { q: "Quelle est la durée de vie des panneaux ?", a: "Les panneaux sélectionnés par Pulse sont garantis 25 ans. Le Pulse Bridge mesure en temps réel votre production et l'IA Sirocco-Shield assure une surveillance constante pour prévenir toute panne." },
             ].map((f, i) => (
               <div className={`faq-item ${activeFaq === i ? "open" : ""}`} key={i}>
                 <button className="faq-question" onClick={() => toggleFaq(i)}>
@@ -367,61 +380,60 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="section-divider" />
+      {/* ===== UNIQUE APP PROMOTION CARD ===== */}
+      <section className="app-promo" id="apercu" style={{ padding: "120px 0", background: "var(--cream)", position: "relative", overflow: "hidden" }}>
 
-      {/* ===== CTA + SIMULATOR ===== */}
-      <section className="cta-section" id="simuler">
-        <div className="container">
-          <div className="cta-card">
-            <h2 className="t-display">Combien votre toit peut-il vous faire économiser&nbsp;?</h2>
-            <p className="t-subheading">Entrez votre facture et votre wilaya — résultat instantané, 100% gratuit.</p>
-            <form className="cta-simulator" onSubmit={handleSimulate}>
-              <div className="cta-simulator-row">
-                <div className="cta-input-group">
-                  <label className="cta-input-label">Facture moyenne (DA / mois)</label>
-                  <input
-                    type="number"
-                    className="cta-input"
-                    placeholder="Ex: 6000"
-                    value={facture}
-                    onChange={(e) => setFacture(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="cta-input-group">
-                  <label className="cta-input-label">Votre Wilaya</label>
-                  <select
-                    className="cta-input"
-                    value={wilaya}
-                    onChange={(e) => setWilaya(e.target.value)}
-                    required
-                    style={{ appearance: "none", cursor: "pointer" }}
-                  >
-                    <option value="" disabled>Sélectionner...</option>
-                    <option value="Nord">Nord (Alger, Oran, Constantine...)</option>
-                    <option value="Hauts Plateaux">Hauts Plateaux (Sétif, Tiaret...)</option>
-                    <option value="Sud">Sud (Adrar, Ghardaïa, Ouargla...)</option>
-                  </select>
-                </div>
-                <div className="cta-input-group">
-                  <button type="submit" className="btn-primary" style={{ height: "54px", width: "100%", justifyContent: "center" }}>
-                    Calculer mes économies <IconArrowRight size={18} style={{ marginLeft: "8px" }} />
-                  </button>
-                </div>
+        {/* Abstract Background Shapes */}
+        <div style={{ position: "absolute", top: "20%", left: "10%", width: "400px", height: "400px", background: "var(--orange-glow)", borderRadius: "50%", filter: "blur(120px)", opacity: 0.2 }} />
+        <div style={{ position: "absolute", bottom: "10%", right: "5%", width: "500px", height: "500px", background: "rgba(30,58,95,0.03)", borderRadius: "50%", filter: "blur(100px)", opacity: 0.4 }} />
+
+        <div className="container" style={{ maxWidth: "1100px", position: "relative", zIndex: 10 }}>
+          <div className="reveal visible" style={{
+            background: "white",
+            borderRadius: "56px",
+            padding: "100px 80px",
+            boxShadow: "0 60px 100px rgba(20, 41, 66, 0.12), 0 20px 40px rgba(20, 41, 66, 0.08)",
+            border: "1px solid rgba(20, 41, 66, 0.03)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+            position: "relative",
+            overflow: "hidden"
+          }}>
+            <div style={{ position: "relative", zIndex: 2, maxWidth: "750px" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", padding: "8px 24px", background: "rgba(30,58,95,0.04)", borderRadius: "100px", marginBottom: "40px", border: "1px solid rgba(30,58,95,0.05)" }}>
+                <div className="hero-eyebrow-dot" style={{ background: "var(--blue)" }} />
+                <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--blue)", letterSpacing: "0.1em", textTransform: "uppercase" }}>Intelligence Portative</span>
               </div>
-              {simResult && (
-                <div className="cta-result reveal visible">
-                  <div className="cta-result-label">Économie annuelle estimée</div>
-                  <div className="cta-result-value">{simResult.toLocaleString("fr-FR")} DA / an</div>
-                  <div className="cta-result-sub">
-                    Basé sur l'ensoleillement moyen de votre région. Pour un dossier complet, <a href="/simulateur" style={{ color: "var(--orange)", fontWeight: "600", textDecoration: "underline" }}>utilisez le simulateur avancé</a>.
-                  </div>
-                </div>
-              )}
-            </form>
+
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--blue-dark)", lineHeight: 1.05, letterSpacing: "-0.04em", marginBottom: "40px" }}>
+                Votre centrale solaire, <br /><em style={{ fontStyle: "italic" }}>rediffusée</em> dans votre poche.
+              </h2>
+
+              <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", lineHeight: 1.6, marginBottom: "56px", opacity: 0.8 }}>
+                L'application Pulse.dz transforme les données brutes de votre toit en décisions intelligentes. Monitoring 24/7, alertes IA Sirocco-Shield, Pulse Credits et financement bancaire intégré.
+              </p>
+
+              <div style={{ display: "flex", justifyContent: "center", gap: "24px", flexWrap: "wrap", opacity: 0.9 }}>
+                <a href="#" className="btn-primary" style={{ background: "var(--blue-dark)", padding: "18px 36px", boxShadow: "0 20px 40px rgba(20,41,66,0.15)", borderRadius: "100px", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <IconApple size={20} /> App Store
+                </a>
+                <a href="#" className="btn-secondary" style={{ padding: "18px 36px", borderColor: "rgba(30,58,95,0.15)", color: "var(--blue-dark)", borderRadius: "100px", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <IconPlayStore size={20} /> Play Store
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+      <style jsx global>{`
+        @keyframes auroraSlow {
+          0% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(2%, 3%) scale(1.05); }
+          100% { transform: translate(-1%, -2%) scale(0.98); }
+        }
+      `}</style>
 
     </>
   );

@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 export const metadata = {
   title: "Pulse.dz — L'énergie intelligente pour chaque toit algérien",
   description:
-    "Pulse.dz calcule votre potentiel solaire en 60 secondes, organise votre financement Mourabaha, et optimise votre production au quotidien grâce à l'IA. 48 wilayas couvertes.",
+    "Pulse.dz est un Système d'Orchestration Énergétique Décentralisé. Calculez votre potentiel solaire en 60 secondes, profitez d'un financement bancaire, et optimisez votre production grâce à l'IA. 58 wilayas couvertes.",
   keywords: [
     "panneau solaire Algérie",
     "simulation solaire Algérie",
@@ -13,7 +13,7 @@ export const metadata = {
     "énergie solaire",
     "Pulse.dz",
     "Sonelgaz",
-    "Mourabaha solaire",
+    "Financement solaire",
   ],
   openGraph: {
     title: "Pulse.dz — Votre toit peut produire votre énergie",

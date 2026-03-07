@@ -9,7 +9,7 @@ export default function EspacePro() {
                 <span className="t-label">Réseau Pulse Pro</span>
                 <h1 className="t-display" style={{ margin: "1rem auto" }}>Devenez installateur certifié Pulse.</h1>
                 <p className="t-subheading" style={{ margin: "0 auto 2rem" }}>
-                    Rejoignez le premier réseau d'installateurs solaires premium en Algérie. Nous vous apportons des clients financés, prêts à signer. Vous vous concentrez sur ce que vous faites de mieux : installer.
+                    Rejoignez le premier réseau d'installateurs solaires certifiés en Algérie. Nous vous apportons des clients éligibles au financement (BNA, BEA, Badr), prêts à signer. Accédez aussi à notre marketplace : nettoyage à la demande, matériel certifié, et leads géolocalisés.
                 </p>
                 <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
                     <a href="#postuler" className="btn-primary">Postuler au réseau <IconArrowRight size={18} style={{ marginLeft: "6px" }} /></a>
@@ -36,7 +36,7 @@ export default function EspacePro() {
                         </div>
                         <h3 className="t-display" style={{ fontSize: "1.6rem", marginBottom: "1rem" }}>Paiement Garanti</h3>
                         <p className="t-subheading" style={{ fontSize: "1rem", color: "var(--text-secondary)" }}>
-                            Grâce au financement BNA Mourabaha intégré, vous êtes payé rubis sur l'ongle dès la validation de la mise en service par le Pulse Bridge.
+                            Grâce au financement bancaire intégré auprès de BNA, BEA ou Badr, vous êtes payé dès la validation de la mise en service par le Pulse Bridge.
                         </p>
                     </div>
 
@@ -44,9 +44,9 @@ export default function EspacePro() {
                         <div style={{ width: "64px", height: "64px", background: "linear-gradient(135deg, var(--blue), #2a5080)", borderRadius: "16px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>
                             <IconShield size={32} color="white" />
                         </div>
-                        <h3 className="t-display" style={{ fontSize: "1.6rem", marginBottom: "1rem" }}>Outils Premium</h3>
+                        <h3 className="t-display" style={{ fontSize: "1.6rem", marginBottom: "1rem" }}>Pro Hub Avancé</h3>
                         <p className="t-subheading" style={{ fontSize: "1rem", color: "var(--text-secondary)" }}>
-                            Vous accédez à la plateforme Pulse Pro : plans d'implantation générés par satellite, suivi des onduleurs et SAV centralisé.
+                            Vue portefeuille de toutes vos installations actives, diagnostics temps réel avec consentement client, détection proactive des anomalies, et gestion des devis intégrée.
                         </p>
                     </div>
                 </div>

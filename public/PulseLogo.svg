@@ -1,0 +1,19 @@
+<svg width="512" height="160" viewBox="0 0 512 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Pulse.dz</title>
+  <rect x="0" y="0" width="512" height="160" rx="80" fill="#02006B" />
+
+  <!-- Stylised P mark on the left -->
+  <g transform="translate(72 40)">
+    <rect x="0" y="0" width="40" height="80" rx="12" fill="#FFFFFF" />
+    <path
+      d="M40 0 C70 0 88 16 88 40 C88 64 70 80 40 80 L40 60 C55 60 64 51 64 40 C64 29 55 20 40 20 Z"
+      fill="#FFFFFF"
+    />
+  </g>
+
+  <!-- Wordmark -->
+  <g fill="#FFFFFF" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="64" font-weight="700">
+    <text x="170" y="102">Pulse</text>
+  </g>
+</svg>
+

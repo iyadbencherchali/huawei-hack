@@ -181,3 +181,30 @@ export function IconTarget({ size = 24, color = "currentColor" }) {
         </svg>
     );
 }
+
+export function IconApple({ size = 20, color = "currentColor" }) {
+    // More realistic Apple-style logo for iOS/App Store CTA
+    return (
+        <svg
+            width={size}
+            height={size}
+            viewBox="0 0 24 24"
+            fill={color}
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M19.67 16.67c-.35.82-.52 1.19-.96 1.9-.62 1.01-1.5 2.26-2.6 2.27-.97.01-1.22-.65-2.55-.65-1.33 0-1.61.64-2.58.65-1.09.02-1.93-1.09-2.55-2.1-1.74-2.8-1.92-6.09-.85-7.84.76-1.24 1.96-1.97 3.34-1.99 1.24-.02 2.2.7 2.96.7.76 0 1.89-.86 3.19-.73.54.02 2.07.22 3.05 1.7-.08.05-1.82 1.07-1.8 3.17.02 2.51 2.2 3.34 2.22 3.35Z" />
+            <path d="M14.51 4.11c.57-.69.96-1.64.86-2.61-.83.03-1.82.55-2.4 1.23-.53.61-.99 1.57-.87 2.49.92.07 1.84-.46 2.41-1.11Z" />
+        </svg>
+    );
+}
+
+export function IconPlayStore({ size = 20, color = "currentColor" }) {
+    return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m21 12-18 10V2l18 10Z" />
+            <path d="m3 2 12 10L3 22" />
+            <path d="M3 2v20" />
+            <path d="m3 12 18 0" />
+        </svg>
+    );
+}

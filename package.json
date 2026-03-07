@@ -8,8 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "d3-geo": "^3.1.1",
+    "d3-scale": "^4.0.2",
+    "leaflet": "^1.9.4",
     "next": "16.1.6",
+    "prop-types": "^15.8.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-algeria-map": "^1.2.0",
+    "react-dom": "19.2.3",
+    "react-leaflet": "^5.0.0",
+    "react-simple-maps": "^3.0.0",
+    "topojson-client": "^3.1.0"
   }
 }

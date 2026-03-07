@@ -16,8 +16,8 @@ export default function Blog() {
         {
             id: 2,
             tag: "Financement",
-            title: "Le guide complet de la Mourabaha Solaire en 2026",
-            desc: "Comment financer votre installation à 0% d'apport grâce aux nouvelles facilités bancaires.",
+            title: "Le guide complet du financement Solaire en 2026",
+            desc: "Comment financer votre installation à 0 apport grâce aux banques partenaires BNA/BEA/Badr et la LF 2026.",
             date: "05 Mars 2026",
             read: "8 min",
             image: "linear-gradient(135deg, #16a34a, #4ade80)"

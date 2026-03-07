@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@pulse-app/*": ["../pulse-app/*"]
     }
   }
 }
